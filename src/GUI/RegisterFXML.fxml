@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.RegisterFXMLController">
+   <children>
+      <StackPane layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="455.0" prefWidth="690.0">
+         <children>
+            <BorderPane prefHeight="200.0" prefWidth="200.0">
+               <left>
+                  <AnchorPane prefHeight="455.0" prefWidth="312.0" stylesheets="@design.css" BorderPane.alignment="CENTER">
+                     <children>
+                        <Button layoutX="55.0" layoutY="360.0" mnemonicParsing="false" onAction="#switchLogin" prefHeight="45.0" prefWidth="216.0" style="-fx-background-color: royalblue;" text="Login Account">
+                           <font>
+                              <Font name="Arial" size="20.0" />
+                           </font>
+                        </Button>
+                        <Label layoutX="43.0" layoutY="308.0" text="Already Have an Account">
+                           <font>
+                              <Font name="Arial" size="20.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="173.0" fitWidth="169.0" layoutX="72.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@334882197_6506967289321661_9163013156950975212_n.jpg" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+               </left>
+               <right>
+                  <AnchorPane prefHeight="455.0" prefWidth="360.0" styleClass="white-form" stylesheets="@design.css" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label layoutX="69.0" layoutY="59.0" text="Register USER">
+                           <font>
+                              <Font name="Arial" size="25.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="SignUP" layoutX="85.0" layoutY="342.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="191.0" style="-fx-background-color: royalblue;" text="SignUP" />
+                        <TextField fx:id="emailu" layoutX="167.0" layoutY="162.0" />
+                        <TextField fx:id="passwordu" layoutX="167.0" layoutY="199.0" />
+                        <TextField fx:id="telephoneu" layoutX="167.0" layoutY="278.0" />
+                        <ComboBox fx:id="roleu" layoutX="167.0" layoutY="236.0" prefWidth="150.0" />
+                        <Label layoutX="25.0" layoutY="131.0" text="Nom" textFill="#2f4eff" />
+                        <Label layoutX="23.0" layoutY="167.0" text="Email" textFill="#2f4eff" />
+                        <Label layoutX="23.0" layoutY="204.0" text="Password" textFill="#2f4eff" />
+                        <Label layoutX="24.0" layoutY="241.0" text="Roles" textFill="#2f4eff" />
+                        <Label layoutX="21.0" layoutY="283.0" prefHeight="21.0" prefWidth="78.0" text="Telephone" textFill="#2f4eff" />
+                        <TextField fx:id="nomu" layoutX="167.0" layoutY="126.0" />
+                     </children>
+                  </AnchorPane>
+               </right>
+            </BorderPane>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>
