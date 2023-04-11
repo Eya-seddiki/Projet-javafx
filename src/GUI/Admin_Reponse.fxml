@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1050.0" style="-fx-background-color: #02030A;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.admin_reponseController">
+   <children>
+      <VBox fx:id="vboxdrawer" alignment="TOP_CENTER" prefHeight="576.0" prefWidth="256.0" style="-fx-background-color: #161616;">
+         <children>
+            <ImageView fx:id="imagechange" fitHeight="73.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/logo_projet.jpg" />
+               </image>
+               <VBox.margin>
+                  <Insets bottom="10.0" top="50.0" />
+               </VBox.margin>
+            </ImageView>
+            <Label fx:id="fullName" text="Admin" textFill="#e7e5e5">
+               <VBox.margin>
+                  <Insets bottom="20.0" />
+               </VBox.margin>
+            </Label>
+            <Button fx:id="btn_reclamation" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" stylesheets="@../css/style.css" text="Reclamation" textFill="#e7e5e5">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/icons8_Home_32px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </Button>
+            <Button fx:id="btn_reponse" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" stylesheets="@../css/style.css" text="Reponse">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/icons8_Box_32px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </Button>
+            <Button fx:id="btnSignout" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" stylesheets="@../css/style.css" text="Sign Out">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/icons8_Sign_Out_32px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </Button>
+         </children>
+      </VBox>
+      <StackPane layoutX="258.0" prefHeight="576.0" prefWidth="793.0" style="-fx-background-color: #02030A;">
+         <children>
+            <Pane fx:id="pnl_abonnement" prefHeight="554.0" prefWidth="793.0" style="-fx-background-color: #FFF;">
+               <children>
+                  <TextField fx:id="txt_Seach" layoutX="534.0" layoutY="43.0" prefHeight="27.0" prefWidth="139.0" promptText="search" style="-fx-border-color: #64c3c2; -fx-background-radius: 200; -fx-border-radius: 200;" styleClass="combo-box" />
+                  <TableView fx:id="tabview" layoutX="18.0" layoutY="83.0" prefHeight="318.0" prefWidth="558.0" style="-fx-background-color: #fff; -fx-border-color: #333333;" styleClass="button2" stylesheets="@../css/fullpackstyling2.css">
+                    <columns>
+                      <TableColumn fx:id="col_id_reclamation" prefWidth="110.0" text="id_reclamation" />
+                        <TableColumn fx:id="col_reponse" prefWidth="105.0" text="Reponse" />
+                        <TableColumn fx:id="col_id" prefWidth="28.0" text="#" />
+                    </columns>
+                  </TableView>
+                  <ImageView fitHeight="17.0" fitWidth="16.0" layoutX="647.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/icons8_Search_52px.png" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="txt_reponse" layoutX="47.0" layoutY="461.0" prefHeight="27.0" prefWidth="139.0" promptText="Reponse" style="-fx-border-color: #f0ad4e;" styleClass="combo-box" />
+                  <ComboBox fx:id="combo_reclamation" layoutX="297.0" layoutY="461.0" prefWidth="150.0" promptText="Reclamation" style="-fx-border-color: #f0ad4e; -fx-background-color: fff;" />
+                  <Label layoutX="300.0" layoutY="441.0" text="Reclamations" textFill="#555555">
+                     <font>
+                        <Font name="Raleway Medium" size="13.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="btn_ajout" layoutX="632.0" layoutY="535.0" mnemonicParsing="false" onAction="#ajouter_reponse" prefHeight="25.0" prefWidth="125.0" style="-fx-background-color: #f0ad4e; -fx-border-radius: 200; -fx-background-radius: 200;" styleClass="button4" text="Ajouter" textFill="WHITE">
+                     <font>
+                        <Font name="Raleway ExtraBold" size="13.0" />
+                     </font></Button>
+                  <Label layoutX="48.0" layoutY="441.0" text="REPONSE" textFill="#555555">
+                     <font>
+                        <Font name="Raleway Medium" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="47.0" layoutY="412.0" text="ADD REPONSE" textFill="#f0ad4e">
+                     <font>
+                        <Font name="Raleway ExtraBold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="21.0" layoutY="34.0" text="REPONSES" textFill="#64c3c2">
+                     <font>
+                        <Font name="Raleway ExtraBold" size="26.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+      </StackPane>
+   </children>
+   <effect>
+      <DropShadow color="#1b1eeb" />
+   </effect>
+</AnchorPane>
