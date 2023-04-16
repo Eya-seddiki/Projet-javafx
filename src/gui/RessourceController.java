@@ -21,6 +21,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import service.RessourceService;
 
 /**
@@ -55,6 +58,9 @@ public class RessourceController implements Initializable {
     private Button btn_supp;
     @FXML
     private Button btn_modifier;
+    @FXML
+    private TextField rech;
+   
 
     /**
      * Initializes the controller class.
@@ -93,7 +99,12 @@ public static boolean estChaineValide (String chaine){
    cas.AjouterRessource(ca); 
          }
          else{
-             System.out.println("Erreur Controle de Saisie");
+             //System.out.println("Erreur Controle de Saisie");
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("controle de saisie");
+            alert.setHeaderText(null);
+            alert.setContentText("veuillez saisir les champs correctement ");
+            alert.showAndWait();
          }
   // List<categorie_article> aricleList = catgorie_article_Service.afficher
   
@@ -147,6 +158,30 @@ public static boolean estChaineValide (String chaine){
         
         // affiche les données dans le tableau
         afficher_tab.getItems().setAll(ressourceList);
+    }
+
+    @FXML
+    private void recherche(KeyEvent event) {
+       if (event.getCode() == KeyCode.ENTER) {
+        String type = rech.getText();
+        Ressource searchedModel = RessourceService.readByTitre(type);
+        if (searchedModel != null) {
+            afficher_tab.getItems().setAll(searchedModel);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("No Titre found");
+            alert.setHeaderText(null);
+            //alert.setContentText("No ressource found with the given TYPE.");
+              alert.setTitle("ERREUR");
+               alert.setContentText("Please select a ressource in the table.");
+            alert.showAndWait();
+            
+        }
+    }
+
+
+
+
     }
     
 }

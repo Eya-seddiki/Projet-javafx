@@ -13,6 +13,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import utils.MyDB;
 
 /**
@@ -116,5 +118,25 @@ public class RessourceService {
     }
  
   
-      
+ public Ressource readByTitre(String type) {
+                   Ressource t = null;
+         try {
+             String requete = "SELECT * FROM Ressource WHERE type_ressource like '%"+type+"%'";
+             
+             
+             Statement st = cnx.createStatement();
+             ResultSet rst = st.executeQuery(requete);
+             while (rst.next()) {
+                 t = new Ressource(rst.getInt(1),//or rst.getInt(1)
+                         rst.getString(2),
+                         rst.getString(3),
+                         rst.getString(4));        }
+             
+             
+         } catch (SQLException ex) {
+             Logger.getLogger(RessourceService.class.getName()).log(Level.SEVERE, null, ex);
+         }
+         return t;
+}
+     
 }

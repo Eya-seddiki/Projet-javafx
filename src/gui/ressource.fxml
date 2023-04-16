@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="430.0" prefWidth="803.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.RessourceController">
+<AnchorPane id="AnchorPane" onKeyPressed="#recherche" prefHeight="430.0" prefWidth="803.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.RessourceController">
    <children>
       <TextField fx:id="tf_id" layoutX="181.0" layoutY="73.0" />
       <TextField fx:id="tf_nom" layoutX="181.0" layoutY="282.0" />
@@ -38,5 +38,6 @@
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
+      <TextField fx:id="rech" layoutX="477.0" layoutY="261.0" />
    </children>
 </AnchorPane>

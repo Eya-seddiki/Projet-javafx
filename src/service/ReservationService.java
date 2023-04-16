@@ -13,9 +13,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import utils.MyDB;
 /**
  *
@@ -33,7 +36,15 @@ public class ReservationService {
     return true;}
    
    public void AjouterReservation(Reservation t) {
-        try {
+       // Vérifier si la description contient des mots interdits
+    if (contientMauvaisMots(t.getDescription_reservation())) {
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setHeaderText("Erreur de saisie");
+        alert.setContentText("La description contient des mots interdits !");
+        alert.showAndWait();
+        return;
+    } 
+       try {
         //String qry ="INSERT INTO `Participation`(`date_participation`,`description_participation`,`evenement_id `,`user_id`) VALUES ('"+t.getDate_participation()+"','"+t.getDescription_participation()+"','"+t.getEvenement_id()+"','"+t.getUser_id()+"')";
         String qry ="INSERT INTO `Reservation`(`description_reservation`,`date_debut`,`date_fin`,`ressource_id`,`user_id`) VALUES ('"+t.getDescription_reservation()+"','"+t.getDate_debut()+"','"+t.getDate_fin()+"','"+t.getRessource_id()+"','"+t.getUser_id()+"')";
  
@@ -51,7 +62,17 @@ public class ReservationService {
         } catch (SQLException ex) {
              System.out.println(ex.getMessage());
         }
-    
+   }
+     private boolean contientMauvaisMots(String texte) {
+    List<String> mauvaisMots = Arrays.asList("SII", "BLOO", "BLII");
+    for (String mot : mauvaisMots) {
+        if (texte.toLowerCase().contains(mot.toLowerCase())) {
+            return true;
+        }
+    }
+    return false;
+
+
     }
    
    

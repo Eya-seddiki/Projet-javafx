@@ -19,7 +19,7 @@ public class ProjetPI extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/gui/ressource.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/gui/reservation.fxml"));
         
         Scene scene = new Scene(root);
         

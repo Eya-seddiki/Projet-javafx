@@ -107,7 +107,12 @@ public static boolean estChaineValide (String chaine){
    sp.AjouterReservation(a); 
          }
          else{
-             System.out.println("Erreur Controle de Saisie");
+             // System.out.println("Erreur Controle de Saisie");
+         Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("controle de saisie");
+            alert.setHeaderText(null);
+            alert.setContentText("veuillez saisir les champs correctement ");
+            alert.showAndWait();
          }
 
   
