@@ -101,6 +101,24 @@ private Connection c = MyConnexion.getInsCon().getcnx();
         return list;
 
     }
+     public ObservableList<reclamation> serach(String cas) throws SQLException {
+        ObservableList<reclamation> list = FXCollections.observableArrayList();
+        String requete = "SELECT * FROM `reclamation` where  id_reclamation LIKE '%" + cas + "%'or nom_reclamation LIKE '%" + cas + "%' or  prenom_reclamation LIKE '%" + cas + "%' or  destination_reclamation LIKE '%" + cas + "%' or  description_reclamation LIKE '%" + cas + "%' or  type_reclamation LIKE '%" + cas + "%' ";
+       try {
+            PreparedStatement ps = c.prepareStatement(requete);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+                list.add(new reclamation(rs.getInt("id_reclamation"),rs.getString("nom_reclamation"), rs.getString("prenom_reclamation"), rs.getString("destination_reclamation"), rs.getString("description_reclamation"), rs.getString("type_reclamation"), rs.getInt("id_user")));
+
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return list;
+    }
     public ObservableList<Integer> Reclamation_ids() throws SQLException {
         ObservableList<Integer> list = FXCollections.observableArrayList();
         String requete = "SELECT * FROM `reclamation` ";

@@ -72,8 +72,6 @@ public class admin_reclamationController implements Initializable {
     @FXML
     private TableColumn<reclamation, Integer> col_id;
     private reclamation_Service serviceReclamation = new reclamation_Service();
-
-    private TableColumn<reclamation, String> col_btnDelet;
     @FXML
     private Button btn_reponse;
     @FXML
@@ -84,53 +82,54 @@ public class admin_reclamationController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        search();
         try {
             refreche();
         } catch (SQLException ex) {
 
         }
 
-        col_btnDelet = new TableColumn("Supprimer");
-        javafx.util.Callback<TableColumn<reclamation, String>, TableCell<reclamation, String>> cellFactory
-                = new Callback<TableColumn<reclamation, String>, TableCell<reclamation, String>>() {
-            public TableCell call(final TableColumn<reclamation, String> param) {
-                final TableCell<reclamation, String> cell = new TableCell<reclamation, String>() {
+    }
 
-                    final Button btn = new Button("supprimer");
+    public void search() {
+        txt_Seach.setOnKeyReleased(e
+                -> {
+            if (txt_Seach.getText().equals("")) {
 
-                    @Override
-                    public void updateItem(String item, boolean empty) {
-                        super.updateItem(item, empty);
-                        if (empty) {
-                            setGraphic(null);
-                            setText(null);
-                        } else {
-                            btn.setOnAction(event -> {
-                                reclamation u = getTableView().getItems().get(getIndex());
+                try {
+                    refreche();
+                } catch (SQLException ex) {
 
-                                try {
-                                    serviceReclamation.Supprimer(u.getId_reclamation());
-                                } catch (SQLException ex) {
+                }
 
-                                }
+            } else {
 
-                                try {
-                                    refreche();
-                                } catch (SQLException ex) {
+                try {
+                    col_nom_reclamation.setCellValueFactory(new PropertyValueFactory<>("nom_reclamation"));
 
-                                }
+                    col_prenom_reclamation.setCellValueFactory(new PropertyValueFactory<>("prenom_reclamation"));
 
-                            });
-                            setGraphic(btn);
-                            setText(null);
-                        }
-                    }
-                };
-                return cell;
+                    col_destination.setCellValueFactory(new PropertyValueFactory<>("destination_reclamation"));
+
+                    col_description.setCellValueFactory(new PropertyValueFactory<>("description_reclamation"));
+
+                    col_type.setCellValueFactory(new PropertyValueFactory<>("type_reclamation"));
+
+                    col_id_user.setCellValueFactory(new PropertyValueFactory<>("id_user"));
+
+                    col_id.setCellValueFactory(new PropertyValueFactory<>("id_reclamation"));
+                    tabview.getItems().clear();
+
+                    tabview.setItems(serviceReclamation.serach(txt_Seach.getText()));
+
+                } catch (SQLException ex) {
+
+                }
+
             }
-        };
-        col_btnDelet.setCellFactory(cellFactory);
-        tabview.getColumns().add(col_btnDelet);
+        }
+        );
+
     }
 
     public void refreche() throws SQLException {

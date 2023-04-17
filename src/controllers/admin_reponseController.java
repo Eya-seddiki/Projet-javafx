@@ -80,13 +80,14 @@ public class admin_reponseController implements Initializable {
     private reponse_Service serviceReponse = new reponse_Service();
     private reclamation_Service serviceReclamaion = new reclamation_Service();
 
-    private TableColumn<reponse, String> col_btnDelet;
+ 
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+           search();
         Modifier();
         tabview.setEditable(true);
         try {
@@ -96,49 +97,40 @@ public class admin_reponseController implements Initializable {
 
         }
         combo_reclamation.getSelectionModel().select(0);
-        col_btnDelet = new TableColumn("Supprimer");
-        javafx.util.Callback<TableColumn<reponse, String>, TableCell<reponse, String>> cellFactory
-                = new Callback<TableColumn<reponse, String>, TableCell<reponse, String>>() {
-            public TableCell call(final TableColumn<reponse, String> param) {
-                final TableCell<reponse, String> cell = new TableCell<reponse, String>() {
 
-                    final Button btn = new Button("supprimer");
-
-                    @Override
-                    public void updateItem(String item, boolean empty) {
-                        super.updateItem(item, empty);
-                        if (empty) {
-                            setGraphic(null);
-                            setText(null);
-                        } else {
-                            btn.setOnAction(event -> {
-                                reponse u = getTableView().getItems().get(getIndex());
-
-                                try {
-                                    serviceReponse.Supprimer(u.getId_reponse());
-                                } catch (SQLException ex) {
-
-                                }
-
-                                try {
-                                    refreche();
-                                } catch (SQLException ex) {
-
-                                }
-
-                            });
-                            setGraphic(btn);
-                            setText(null);
-                        }
-                    }
-                };
-                return cell;
-            }
-        };
-        col_btnDelet.setCellFactory(cellFactory);
-        tabview.getColumns().add(col_btnDelet);
     }
+  public void search() {
+        txt_Seach.setOnKeyReleased(e
+                -> {
+            if (txt_Seach.getText().equals("")) {
 
+                try {
+                    refreche();
+                } catch (SQLException ex) {
+
+                }
+
+            } else {
+
+                try {
+                      col_reponse.setCellValueFactory(new PropertyValueFactory<>("reponse"));
+        col_reponse.setCellFactory(TextFieldTableCell.<reponse>forTableColumn());
+        col_id_reclamation.setCellValueFactory(new PropertyValueFactory<>("id_reclamation"));
+        col_id_reclamation.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        col_id.setCellValueFactory(new PropertyValueFactory<>("id_reponse"));
+        tabview.getItems().clear();
+
+                    tabview.setItems(serviceReponse.serach(txt_Seach.getText()));
+
+                } catch (SQLException ex) {
+
+                }
+
+            }
+        }
+        );
+
+    }
     public void refreche() throws SQLException {
 
         col_reponse.setCellValueFactory(new PropertyValueFactory<>("reponse"));

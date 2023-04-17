@@ -40,7 +40,23 @@ private Connection c = MyConnexion.getInsCon().getcnx();
     
     
     }
+     public ObservableList<reponse> serach(String cas) throws SQLException {
+        ObservableList<reponse> list = FXCollections.observableArrayList();
+        String requete = "SELECT * FROM `reclamation` where  id_reponse LIKE '%" + cas + "%'or reponse LIKE '%" + cas + "%'  or  id_reclamation LIKE '%" + cas + "%' ";
+       try {
+            PreparedStatement ps = c.prepareStatement(requete);
+            ResultSet rs = ps.executeQuery();
 
+            while (rs.next()) {
+
+               list.add(new reponse(rs.getInt("id_reponse"),rs.getString("reponse"),rs.getInt("id_reclamation")));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return list;
+    }
     @Override
     public void Supprimer(int t) throws SQLException {
         String requete = "DELETE FROM `reponse` WHERE `id_reponse`=" + String.valueOf(t) + "";
