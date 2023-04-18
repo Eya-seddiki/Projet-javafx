@@ -9,6 +9,11 @@ package Services;
 
 import Entities.Rendezvous;
 import Utiles.MyDB;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import static java.rmi.Naming.list;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -22,6 +27,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import net.glxn.qrgen.QRCode;
+import net.glxn.qrgen.image.ImageType;
 
 /**
  *
@@ -243,5 +250,19 @@ try {
 
 
 
+   
+    public String GenerateQrEvent(Rendezvous event) throws FileNotFoundException, IOException {
+        String eventName = "event name: " + event.getNomRendezvous() + "\n" + "rende vous date: " + event.getDateRendezvous() + "\n" + "rende vous lieu: " + event.getLieuRendezvous() + "\n";
+        ByteArrayOutputStream out = QRCode.from(eventName).to(ImageType.JPG).stream();
+        String filename = event.getNomRendezvous() + "_QrCode.jpg";
+        //File f = new File("src\\utils\\img\\" + filename);
+                File f = new File("C:\\Users\\HP\\Desktop\\semestre 2\\java\\imgQr\\qrcode" + filename);
+        FileOutputStream fos = new FileOutputStream(f);
+        fos.write(out.toByteArray());
+        fos.flush();
+       
+        System.out.println("qr yemshi");
+        return filename;
+    }
     
 }

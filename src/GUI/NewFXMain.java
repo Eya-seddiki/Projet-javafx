@@ -25,9 +25,9 @@ public class NewFXMain extends Application {
     @Override
 
    public void start(Stage primaryStage) throws IOException {
-               Parent root = FXMLLoader.load(getClass().getResource("../gui/FactureFXML.fxml"));
+               Parent root = FXMLLoader.load(getClass().getResource("../gui/front.fxml"));
         Scene scene = new Scene(root,950,650); 
-        primaryStage.setTitle("Gérer Evenements");
+        primaryStage.setTitle("Gérer Rendez-vous");
         //primaryStage.setIconified(true);
         primaryStage.setScene(scene);
         primaryStage.show();

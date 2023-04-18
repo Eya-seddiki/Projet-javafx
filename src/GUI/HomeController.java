@@ -20,21 +20,46 @@ import javafx.scene.control.TextField;
 
 
 import Services.ServiceRendezvous;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.awt.Desktop;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.List;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.controlsfx.control.Notifications;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 /**
  * FXML Controller class
@@ -81,6 +106,16 @@ public class HomeController implements Initializable {
     ServiceRendezvous SR=new ServiceRendezvous();
     @FXML
     private TextField idmodifierField;
+    @FXML
+    private Button btnfacture;
+    @FXML
+    private Button excelbtn;
+    @FXML
+    private Button musicButton;
+    @FXML
+    private Button pauseMusicButton;
+    @FXML
+    private ImageView QrCode;
 
 
     /**
@@ -97,8 +132,13 @@ public class HomeController implements Initializable {
         }
 //getEvents();
         
+    
     }    
     
+    
+           String path = "C:\\xampp\\htdocs\\music\\Alok & Alan Walker.mp3";
+    Media media = new Media(new File(path).toURI().toString());
+    MediaPlayer mediaPlayer = new MediaPlayer(media);
     
      private boolean NoDate() {
          LocalDate currentDate = LocalDate.now();     
@@ -177,7 +217,7 @@ public class HomeController implements Initializable {
 
 
     @FXML
-    private void modifierrendezvous(ActionEvent event) {
+    private void modifierrendezvous(ActionEvent event) throws SQLException {
         
         
           Rendezvous e = new Rendezvous();
@@ -191,7 +231,8 @@ public class HomeController implements Initializable {
         e.setUser_id(Integer.valueOf(usertf.getText()));
         SR.modifier(e);
         reset();
-        getEvents();        
+//        getEvents(); 
+         senddata();
     }
 
     @FXML
@@ -267,7 +308,7 @@ public class HomeController implements Initializable {
     }//get events
 
     @FXML
-    private void choisirRendezvous(MouseEvent event) {
+    private void choisirRendezvous(MouseEvent event) throws IOException {
         
           Rendezvous e = tableRendez.getItems().get(tableRendez.getSelectionModel().getSelectedIndex());     
         //idLabel.setText(String.valueOf(e.getId_event()));
@@ -278,8 +319,155 @@ public class HomeController implements Initializable {
         lieutf.setText(e.getLieuRendezvous());
         //dateEventField.setValue((e.getDate()));
         usertf.setText(String.valueOf(e.getUser_id()));
+        
+        // lel qr code 
+        
+              String filename = SR.GenerateQrEvent(e);
+            System.out.println("filename lenaaa " + filename);
+            String path1="C:\\Users\\HP\\Desktop\\semestre 2\\java\\imgQr\\qrcode"+filename;
+             File file1=new File(path1);
+              Image img1 = new Image(file1.toURI().toString());
+              //Image image = new Image(getClass().getResourceAsStream("src/utils/img/" + filename));
+            QrCode.setImage(img1);  
          
  
+    }
+
+    @FXML
+    private void facture(ActionEvent event) {
+                       try {
+             FXMLLoader loader = new FXMLLoader(getClass().getResource("FactureFXML.fxml"));
+             Parent root = loader.load();
+             Scene scene = new Scene(root);
+             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+             stage.setScene(scene);
+             stage.show();
+             stage.toFront();
+         } catch (IOException ex) {
+             System.out.println(ex.getMessage());
+         }
+    }
+
+    @FXML
+    private void excelrendez(ActionEvent event) {
+        try{
+String filename="C:\\Users\\HP\\Desktop\\semestre 2\\java\\fichierExcel\\dataEvent.xls" ;
+    HSSFWorkbook hwb=new HSSFWorkbook();
+    HSSFSheet sheet =  hwb.createSheet("new sheet");
+    HSSFRow rowhead=   sheet.createRow((short)0);
+rowhead.createCell((short) 0).setCellValue("nom evenement");
+rowhead.createCell((short) 1).setCellValue("type d'evenement");
+rowhead.createCell((short) 2).setCellValue("description ");
+List<Rendezvous> evenements = SR.recupererrendezVous();
+  for (int i = 0; i < evenements.size(); i++) {          
+HSSFRow row=   sheet.createRow((short)i);
+row.createCell((short) 0).setCellValue(evenements.get(i).getNomRendezvous());
+row.createCell((short) 1).setCellValue(evenements.get(i).getPrenomRendezvous());
+row.createCell((short) 2).setCellValue(evenements.get(i).getDateRendezvous());
+row.createCell((short) 3).setCellValue(evenements.get(i).getLieuRendezvous());
+//row.createCell((short) 3).setCellValue((evenements.get(i).getDate()));
+i++;
+            }
+int i=1;
+    FileOutputStream fileOut =  new FileOutputStream(filename);
+hwb.write(fileOut);
+fileOut.close();
+System.out.println("Your excel file has been generated!");
+ File file = new File(filename);
+        if (file.exists()){ 
+        if(Desktop.isDesktopSupported()){
+            Desktop.getDesktop().open(file);
+        }}       
+} catch ( Exception ex ) {
+    System.out.println(ex);
+}
+        
+    }
+
+    @FXML
+    private void pdfEvent(ActionEvent event) throws IOException {
+        
+          // evenement tab_Recselected = evenementTv.getSelectionModel().getSelectedItem();
+               long millis = System.currentTimeMillis();
+        java.sql.Date DateRapport = new java.sql.Date(millis);
+
+        String DateLyoum = new SimpleDateFormat("yyyyMMddHHmmss", Locale.ENGLISH).format(DateRapport);//yyyyMMddHHmmss
+        System.out.println("Date d'aujourdhui : " + DateLyoum);
+
+        com.itextpdf.text.Document document = new com.itextpdf.text.Document();
+
+        try {
+            PdfWriter.getInstance(document, new FileOutputStream(String.valueOf(DateLyoum + ".pdf")));//yyyy-MM-dd
+            document.open();
+            Paragraph ph1 = new Paragraph("Voici un rapport détaillé de notre application qui contient tous les RENDEZ VOUS . Pour chaque événement, nous fournissons des informations telles que la date d'aujourdhui :" + DateRapport );
+            Paragraph ph2 = new Paragraph(".");
+            PdfPTable table = new PdfPTable(4);
+            //On créer l'objet cellule.
+            PdfPCell cell;
+            //contenu du tableau.
+            table.addCell("nom_RENDEZVOUS");
+            table.addCell("prenom");
+            table.addCell("lieu");
+            table.addCell("date_event");
+            Rendezvous r = new Rendezvous();
+            SR.recupererrendezVous().forEach(e
+                    -> {
+                table.setHorizontalAlignment(Element.ALIGN_CENTER);
+                table.addCell(String.valueOf(e.getNomRendezvous()));
+                table.addCell(String.valueOf(e.getPrenomRendezvous()));
+                table.addCell(String.valueOf(e.getLieuRendezvous())); 
+                table.addCell(String.valueOf(e.getDateRendezvous())); 
+            }
+            );
+            
+//            Image img = Image.getInstance("C:\\Users\\msi\\Desktop\\projet yocef\\reclamation\\src\\com\\img\\Exchange.png12.png");
+//       img.scaleAbsoluteHeight(60);
+//       img.scaleAbsoluteWidth(100);
+//       img.setAlignment(Image.ALIGN_RIGHT);
+//       document.add(img);
+            document.add(ph1);
+            document.add(ph2);
+            document.add(table);
+             } catch (Exception e) {
+            System.out.println(e);
+        }
+        document.close();
+
+        ///Open FilePdf
+        File file = new File(DateLyoum + ".pdf");
+        Desktop desktop = Desktop.getDesktop();
+        if (file.exists()) //checks file exists or not  
+        {
+            desktop.open(file); //opens the specified file   
+        }
+    }
+
+    @FXML
+    private void playMusic(ActionEvent event) {
+        
+           mediaPlayer.play();
+       // Image img = new Image("C:\\xampp\\htdocs\\music\\ala.jpg");
+        Notifications notificationBuilder = Notifications.create()
+                .title("Musique")
+                .text("      Musique Jouée");
+//         Notifications notificationBuilder = Notifications.create()
+//                .title("Musique")
+//                .text("      Musique Jouée").graphic(new ImageView(img)).hideAfter(Duration.seconds(5))
+//                .position(Pos.BOTTOM_RIGHT);
+        notificationBuilder.darkStyle();
+        notificationBuilder.show();
+    }
+
+    @FXML
+    private void pauseMusic(ActionEvent event) {
+        
+         mediaPlayer.pause();
+        //Image img = new Image("fllogo.png");
+        Notifications notificationBuilder = Notifications.create()
+                .title("Musique")
+                .text("      Musique Arrêtée");
+        notificationBuilder.darkStyle();
+        notificationBuilder.show();
     }
 
     

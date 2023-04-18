@@ -6,7 +6,6 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
@@ -37,11 +36,12 @@
             <TableColumn fx:id="useridTV" prefWidth="132.79998779296875" text="user id" />
         </columns>
       </TableView>
-      <ImageView fitHeight="166.0" fitWidth="172.0" layoutX="721.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@logo.PNG" />
-         </image>
-      </ImageView>
       <TextField fx:id="idmodifierField" layoutX="608.0" layoutY="164.0" prefHeight="26.0" prefWidth="40.0" />
+      <Button fx:id="btnfacture" layoutX="685.0" layoutY="429.0" mnemonicParsing="false" onAction="#facture" prefHeight="26.0" prefWidth="106.0" text="facture" />
+      <Button fx:id="excelbtn" layoutX="62.0" layoutY="416.0" mnemonicParsing="false" onAction="#excelrendez" prefHeight="26.0" prefWidth="99.0" style="-fx-background-radius: 30;" text="EXCEL" />
+      <Button layoutX="199.0" layoutY="423.0" mnemonicParsing="false" onAction="#pdfEvent" text="pdf" />
+      <Button fx:id="musicButton" layoutX="313.0" layoutY="423.0" mnemonicParsing="false" onAction="#playMusic" text="music" />
+      <Button fx:id="pauseMusicButton" layoutX="313.0" layoutY="455.0" mnemonicParsing="false" onAction="#pauseMusic" text="stop" />
+      <ImageView fx:id="QrCode" fitHeight="150.0" fitWidth="200.0" layoutX="723.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>
