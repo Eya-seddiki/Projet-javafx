@@ -6,28 +6,48 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="486.0" prefWidth="793.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ReservationController">
    <children>
-      <TextField fx:id="tx_reservation" layoutX="136.0" layoutY="43.0" />
+      <ImageView fitHeight="559.0" fitWidth="889.0" layoutX="-24.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Downloads/ttytt.jpg" />
+         </image>
+      </ImageView>
       <TextField fx:id="tx_user" layoutX="136.0" layoutY="325.0" />
       <TextField fx:id="tx_ressource" layoutX="136.0" layoutY="268.0" />
       <TextField fx:id="tf_descrip" layoutX="136.0" layoutY="214.0" />
-      <Label layoutX="49.0" layoutY="47.0" text="id reservation" />
-      <Label layoutX="67.0" layoutY="101.0" text="date debut" />
-      <Label layoutX="71.0" layoutY="153.0" text="date fin" />
-      <Label layoutX="55.0" layoutY="218.0" text="description" />
-      <Label layoutX="67.0" layoutY="272.0" text="ressource" />
-      <Label layoutX="74.0" layoutY="329.0" text="user" />
+      <Label layoutX="43.0" layoutY="98.0" text="date debut" textFill="#4a4b4d">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label layoutX="60.0" layoutY="161.0" text="date fin" textFill="#4a4b4d">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label layoutX="51.0" layoutY="218.0" text="description" textFill="#4a4b4d">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label layoutX="57.0" layoutY="272.0" text="ressource" textFill="#4a4b4d">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label layoutX="74.0" layoutY="326.0" text="user" textFill="#4a4b4d">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
       <DatePicker fx:id="dp_debut" layoutX="136.0" layoutY="97.0" />
       <DatePicker fx:id="dp_fin" layoutX="136.0" layoutY="158.0" />
-      <Button layoutX="419.0" layoutY="334.0" mnemonicParsing="false" onAction="#click_on_ajouetr" style="-fx-background-color: #5499C7;" text="Ajouter">
+      <Button layoutX="173.0" layoutY="372.0" mnemonicParsing="false" onAction="#click_on_ajouetr" style="-fx-background-color: #5499C7;" text="Ajouter" textFill="#fcf5f5">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <TableView fx:id="tab_reserv" layoutX="335.0" layoutY="72.0" prefHeight="223.0" prefWidth="451.0">
+      <TableView fx:id="tab_reserv" layoutX="322.0" layoutY="117.0" onMouseClicked="#edp1" prefHeight="223.0" prefWidth="451.0" style="-fx-background-color: #F6F1F1;">
         <columns>
           <TableColumn fx:id="tb_id" prefWidth="75.0" text="id" />
           <TableColumn fx:id="tb_debut" prefWidth="75.0" text="date debut" />
@@ -37,13 +57,19 @@
             <TableColumn fx:id="tb_user" prefWidth="75.0" text="user" />
         </columns>
       </TableView>
-      <Button fx:id="btn_supprimer" layoutX="526.0" layoutY="334.0" mnemonicParsing="false" onAction="#click_on_supprimer" style="-fx-background-color: #5499C7;" text="Supprimer">
+      <Button fx:id="btn_supprimer" layoutX="317.0" layoutY="385.0" mnemonicParsing="false" onAction="#click_on_supprimer" style="-fx-background-color: #5499C7;" text="Supprimer" textFill="#fcf5f5">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <Button fx:id="btn_modifier" layoutX="659.0" layoutY="338.0" mnemonicParsing="false" onAction="#click_on_modifier" style="-fx-background-color: #5499C7;" text="Modifier">
+      <Button fx:id="btn_modifier" layoutX="322.0" layoutY="350.0" mnemonicParsing="false" onAction="#click_on_modifier" style="-fx-background-color: #5499C7;" text="Modifier" textFill="#fcf5f5">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
+      <Button layoutX="31.0" layoutY="515.0" mnemonicParsing="false" onAction="#click_on_Mail" style="-fx-background-color: #5499C7;" text="Mail" textFill="#fcf5f5">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <ImageView fx:id="qrcodee" fitHeight="137.0" fitWidth="136.0" layoutX="619.0" layoutY="362.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

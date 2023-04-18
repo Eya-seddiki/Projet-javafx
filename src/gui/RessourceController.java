@@ -6,6 +6,7 @@
 package gui;
 
 import entity.Ressource;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
@@ -13,7 +14,11 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -24,6 +29,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import service.RessourceService;
 
 /**
@@ -60,6 +66,8 @@ public class RessourceController implements Initializable {
     private Button btn_modifier;
     @FXML
     private TextField rech;
+    @FXML
+    private Button btn_ajout1;
    
 
     /**
@@ -79,6 +87,7 @@ public class RessourceController implements Initializable {
         
         // affiche les données dans le tableau
         afficher_tab.getItems().setAll(catarticleList);
+        
         // TODO
         // TODO
     }    
@@ -183,5 +192,16 @@ public static boolean estChaineValide (String chaine){
 
 
     }
+
+    @FXML
+    private void click_on_SMS(ActionEvent event) throws IOException {
+             Parent root = FXMLLoader.load(getClass().getResource("sendSMS.fxml"));
+    Scene scene = new Scene(root);
+    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    stage.setScene(scene);
+    stage.show();
+    }
     
 }
+
+

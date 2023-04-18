@@ -5,24 +5,43 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" onKeyPressed="#recherche" prefHeight="430.0" prefWidth="803.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.RessourceController">
+<AnchorPane id="AnchorPane" onKeyPressed="#recherche" prefHeight="430.0" prefWidth="803.0" style="-fx-background-image: #F1BAA1;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.RessourceController">
    <children>
-      <TextField fx:id="tf_id" layoutX="181.0" layoutY="73.0" />
+      <ImageView fitHeight="540.0" fitWidth="823.0" layoutY="-54.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Downloads/ttytt.jpg" />
+         </image>
+      </ImageView>
+      <TextField fx:id="tf_id" layoutX="178.0" layoutY="73.0" />
       <TextField fx:id="tf_nom" layoutX="181.0" layoutY="282.0" />
       <TextField fx:id="tf_dispo" layoutX="181.0" layoutY="208.0" />
       <TextField fx:id="tf_type" layoutX="181.0" layoutY="143.0" />
-      <Label layoutX="60.0" layoutY="77.0" text="id" />
-      <Label layoutX="74.0" layoutY="286.0" text="nom" />
-      <Label layoutX="70.0" layoutY="200.0" text="dispo" />
-      <Label layoutX="70.0" layoutY="147.0" text="type" />
-      <Button fx:id="btn_ajout" layoutX="304.0" layoutY="356.0" mnemonicParsing="false" onAction="#click_on_ajouter" style="-fx-background-color: #5499C7;" text="Ajouter">
+      <Label layoutX="68.0" layoutY="76.0" text="id" textFill="#4a4b4d">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label layoutX="69.0" layoutY="282.0" text="nom" textFill="#4a4b4d">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label layoutX="44.0" layoutY="208.0" text="disponibilité" textFill="#4a4b4d">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label layoutX="64.0" layoutY="143.0" text="type" textFill="#4a4b4d">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Button fx:id="btn_ajout" layoutX="301.0" layoutY="393.0" mnemonicParsing="false" onAction="#click_on_ajouter" style="-fx-background-color: #5499C7;" text="Ajouter" textFill="#fcf5f5">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <TableView fx:id="afficher_tab" layoutX="360.0" layoutY="21.0" prefHeight="205.0" prefWidth="302.0">
+      <TableView fx:id="afficher_tab" layoutX="406.0" layoutY="76.0" prefHeight="205.0" prefWidth="302.0" style="-fx-background-color: #F6F1F1;">
         <columns>
           <TableColumn fx:id="fx_id" prefWidth="75.0" text="ID" />
           <TableColumn fx:id="fx_type" prefWidth="75.0" text="type" />
@@ -30,14 +49,24 @@
             <TableColumn fx:id="fx_nom" prefWidth="75.0" text="nom" />
         </columns>
       </TableView>
-      <Button fx:id="btn_supp" layoutX="459.0" layoutY="356.0" mnemonicParsing="false" onAction="#click_on_supprimer" style="-fx-background-color: #5499C7;" text="Supprimer">
+      <Button fx:id="btn_supp" layoutX="452.0" layoutY="393.0" mnemonicParsing="false" onAction="#click_on_supprimer" style="-fx-background-color: #5499C7;" text="Supprimer" textFill="#fcf5f5">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <Button fx:id="btn_modifier" layoutX="618.0" layoutY="343.0" mnemonicParsing="false" onAction="#click_on_modifier" style="-fx-background-color: #5499C7;" text="Modifier">
+      <Button fx:id="btn_modifier" layoutX="607.0" layoutY="393.0" mnemonicParsing="false" onAction="#click_on_modifier" style="-fx-background-color: #5499C7;" text="Modifier" textFill="#fcf5f5">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <TextField fx:id="rech" layoutX="477.0" layoutY="261.0" />
+      <TextField fx:id="rech" layoutX="501.0" layoutY="295.0" promptText="rechercher" />
+      <Button fx:id="btn_ajout1" layoutX="170.0" layoutY="393.0" mnemonicParsing="false" onAction="#click_on_SMS" style="-fx-background-color: #5499C7;" text="SMS" textFill="#fcf5f5">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="53.0" fitWidth="65.0" layoutX="752.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Downloads/logo.jpg" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

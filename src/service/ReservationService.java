@@ -131,8 +131,35 @@ public class ReservationService {
         } catch (SQLException ex) {
             Logger.getLogger(ReservationService.class.getName()).log(Level.SEVERE, null, ex);
         }    }
-
     
+       public List<Reservation> recuperer() {
+        List<Reservation> list =new ArrayList<>();
+        try {
+            String req = "select * from Reservation";
+            Statement st = cnx.createStatement();
+            ResultSet rs =st.executeQuery(req);
+            while(rs.next()){
+                Reservation p = new Reservation();
+                p.setId(rs.getInt("id"));
+                p.setDate_debut(rs.getDate("date_debut"));
+                p.setDate_fin(rs.getDate("date_fin"));
+                p.setDescription_reservation(rs.getString("Description_reservation"));
+                p.setRessource_id(rs.getInt("Ressource_id"));
+                p.setUser_id(rs.getInt("User_id"));
+                list.add(p);
+            }
+            
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        return list;
+    }
+
+          public  Reservation GetById(int id) {
+        return recuperer().stream().filter(e -> e.getId()== id).findFirst().get();
+
+    }
     
    // @Override
     public void modifierReservation(Reservation c) {
