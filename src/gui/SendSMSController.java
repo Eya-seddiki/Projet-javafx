@@ -32,7 +32,7 @@ public class SendSMSController {
     Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
     LocalDate currentDate = LocalDate.now();
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-    String messageText = "Votre demande de Ressource a été avec succées  " + formatter.format(currentDate);
+    String messageText = "Votre Ressource et enregistrer avec succées ! " + formatter.format(currentDate);
     Message message = Message.creator(new PhoneNumber(toPhoneNumber),
             new PhoneNumber(TWILIO_NUMBER),
             messageText).create();
