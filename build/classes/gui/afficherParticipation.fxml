@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #29E8D7;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AfficherParticipationController">
+   <children>
+      <Button fx:id="supprimerPartBtn" layoutX="76.0" layoutY="88.0" mnemonicParsing="false" onAction="#supprimerParticipation" style="-fx-background-radius: 30;" text="supprimer participation" />
+      <TextField fx:id="idread" layoutX="412.0" layoutY="87.0" prefHeight="26.0" prefWidth="58.0" />
+      <TextField fx:id="iduserField" layoutX="71.0" layoutY="347.0" />
+      <TextField fx:id="ideventField" layoutX="250.0" layoutY="347.0" />
+      <TextField fx:id="datepartField1" layoutX="428.0" layoutY="347.0" />
+      <DatePicker fx:id="datepartField" layoutX="405.0" layoutY="304.0" />
+      <Label layoutX="184.0" layoutY="23.0" prefHeight="28.0" prefWidth="246.0" text="la liste de partitions" textFill="#690808">
+         <font>
+            <Font name="Cambria Bold Italic" size="23.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tableParticipation" layoutX="71.0" layoutY="140.0" onMouseClicked="#choisirParticipation" prefHeight="198.0" prefWidth="308.0">
+        <columns>
+          <TableColumn fx:id="iduserTv" prefWidth="94.39996337890625" text="id utilisateur" />
+          <TableColumn fx:id="ideventTv" prefWidth="88.0" text="id evenement" />
+            <TableColumn fx:id="datePartTv" prefWidth="124.79998779296875" text="date participation" />
+        </columns>
+      </TableView>
+      <Button layoutX="27.0" layoutY="25.0" mnemonicParsing="false" onAction="#go_to_back" text="Button" />
+      <TextField fx:id="idEventFIND" layoutX="418.0" layoutY="140.0" onKeyPressed="#findPart" />
+      <Button fx:id="ExportPDF" layoutX="236.0" layoutY="88.0" mnemonicParsing="false" onAction="#ExportPDF" prefHeight="25.0" prefWidth="88.0" text="Export PDF" />
+   </children>
+</AnchorPane>

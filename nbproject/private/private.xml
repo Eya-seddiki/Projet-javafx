@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/xampp2/htdocs/PI/Evenement/src/gui/EvenementController.java</file>
+            <file>file:/C:/xampp2/htdocs/PI/Evenement/src/images/icons8_Search_52px.png</file>
+            <file>file:/C:/xampp2/htdocs/PI/Evenement/src/utils/img/bujkn_QrCode.jpg</file>
+            <file>file:/C:/xampp2/htdocs/PI/Evenement/src/gui/AjouterEvenementController.java</file>
+            <file>file:/C:/xampp2/htdocs/PI/Evenement/src/entities/evenement.java</file>
+            <file>file:/C:/xampp2/htdocs/PI/Evenement/src/entities/Avis.java</file>
+            <file>file:/C:/xampp2/htdocs/PI/Evenement/src/gui/AfficherEvenementController.java</file>
+            <file>file:/C:/xampp2/htdocs/PI/Evenement/src/services/SendMail.java</file>
+            <file>file:/C:/xampp2/htdocs/PI/Evenement/src/services/ParticipationService.java</file>
+            <file>file:/C:/xampp2/htdocs/PI/Evenement/src/utils/MyDB.java</file>
+            <file>file:/C:/xampp2/htdocs/PI/Evenement/src/gui/AfficherParticipationController.java</file>
+            <file>file:/C:/xampp2/htdocs/PI/Evenement/src/entities/participation.java</file>
+            <file>file:/C:/xampp2/htdocs/PI/Evenement/src/gui/NewFXMain1.java</file>
+            <file>file:/C:/xampp2/htdocs/PI/Evenement/src/services/MailerService.java</file>
+            <file>file:/C:/xampp2/htdocs/PI/Evenement/src/images/icons8_Sign_Out_32px.png</file>
+            <file>file:/C:/xampp2/htdocs/PI/Evenement/src/services/Pdf2.java</file>
+            <file>file:/C:/xampp2/htdocs/PI/Evenement/src/test/test.java</file>
+            <file>file:/C:/xampp2/htdocs/PI/Evenement/src/services/EvenementService.java</file>
+            <file>file:/C:/xampp2/htdocs/PI/Evenement/src/utils/img/alaaa_QrCode.jpg</file>
+            <file>file:/C:/xampp2/htdocs/PI/Evenement/src/Controller/EvenementController.php</file>
+        </group>
+    </open-files>
+</project-private>
