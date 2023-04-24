@@ -5,9 +5,12 @@
         <group>
             <file>file:/C:/Users/Narimen/Desktop/transport/src/projetpi/ProjetPI.java</file>
             <file>file:/C:/Users/Narimen/Desktop/transport/src/entity/Reservation.java</file>
+            <file>file:/C:/Users/Narimen/Desktop/transport/src/service/RessourceService.java</file>
             <file>file:/C:/Users/Narimen/Desktop/transport/src/entity/Ressource.java</file>
             <file>file:/C:/Users/Narimen/Desktop/transport/src/gui/RessourceController.java</file>
             <file>file:/C:/Users/Narimen/Desktop/transport/src/gui/ReservationController.java</file>
+            <file>file:/C:/Users/Narimen/Desktop/transport/src/service/ReservationService.java</file>
+            <file>file:/C:/Users/Narimen/Desktop/transport/src/gui/ressource.fxml</file>
         </group>
     </open-files>
 </project-private>

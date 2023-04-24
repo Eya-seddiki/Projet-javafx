@@ -5,6 +5,7 @@
  */
 package service;
 
+import entity.Reservation;
 import entity.Ressource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -77,8 +78,32 @@ public class RessourceService {
         
         
     }
+      public List<Ressource> recuperer() {
+        List<Ressource> list =new ArrayList<>();
+        try {
+            String req = "select * from Ressource";
+            Statement st = cnx.createStatement();
+            ResultSet rs =st.executeQuery(req);
+            while(rs.next()){
+                Ressource p = new Ressource();
+                p.setId(rs.getInt("id"));
+                p.setType_ressource(rs.getString("type_ressource"));
+                p.setDisponibilite_ressource(rs.getString("disponibilite_ressource"));
+                p.setNom_ressource(rs.getString("nom_ressource"));
+                list.add(p);
+            }
+            
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        return list;
+    }
     
-   
+             public  Ressource GetById(int id) {
+        return recuperer().stream().filter(e -> e.getId()== id).findFirst().get();
+
+    }
       //@Override
     public void SupprimerRessource(Ressource r) throws SQLException {
 //try {

@@ -21,10 +21,6 @@
       <TextField fx:id="tf_nom" layoutX="181.0" layoutY="282.0" />
       <TextField fx:id="tf_dispo" layoutX="181.0" layoutY="208.0" />
       <TextField fx:id="tf_type" layoutX="181.0" layoutY="143.0" />
-      <Label layoutX="68.0" layoutY="76.0" text="id" textFill="#4a4b4d">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font></Label>
       <Label layoutX="69.0" layoutY="282.0" text="nom" textFill="#4a4b4d">
          <font>
             <Font name="System Bold" size="14.0" />
@@ -41,7 +37,7 @@
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <TableView fx:id="afficher_tab" layoutX="406.0" layoutY="76.0" prefHeight="205.0" prefWidth="302.0" style="-fx-background-color: #F6F1F1;">
+      <TableView fx:id="afficher_tab" layoutX="406.0" layoutY="76.0" onMouseClicked="#edp1" prefHeight="205.0" prefWidth="302.0" style="-fx-background-color: #F6F1F1;">
         <columns>
           <TableColumn fx:id="fx_id" prefWidth="75.0" text="ID" />
           <TableColumn fx:id="fx_type" prefWidth="75.0" text="type" />

@@ -16,6 +16,9 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -83,6 +86,8 @@ public class ReservationController implements Initializable {
     private Button btn_modifier;
     @FXML
     private ImageView qrcodee;
+    @FXML
+    private TextField tx_id;
 
     /**
      * Initializes the controller class.
@@ -99,7 +104,7 @@ public class ReservationController implements Initializable {
         tb_user.setCellValueFactory(new PropertyValueFactory<>("user_id"));
             // récupère les données des utilisateurs depuis la base de données
             List<Reservation> catarticleList = ReservationService.AfficherReservation();
-     // tf_descrip.setVisible(false);
+     tx_id.setVisible(false);
         
         // affiche les données dans le tableau
         tab_reserv.getItems().setAll(catarticleList);
@@ -113,7 +118,7 @@ public static boolean estChaineValide (String chaine){
 
     @FXML
     private void click_on_ajouetr(ActionEvent event) throws SQLException {
-         int id_rese = Integer.parseInt(tx_reservation.getText());
+        // int id_rese = Integer.parseInt(tx_reservation.getText());
          Date  date_debut=java.sql.Date.valueOf(dp_debut.getValue());
          Date  date_fin=java.sql.Date.valueOf(dp_fin.getValue());
          
@@ -124,7 +129,7 @@ public static boolean estChaineValide (String chaine){
          {
                  ReservationService sp=new ReservationService();
      
-   Reservation a = new Reservation(id_rese,date_debut,date_fin,descr,id_user,id_ressou);
+   Reservation a = new Reservation(date_debut,date_fin,descr,id_user,id_ressou);
    sp.AjouterReservation(a); 
          }
          else{
@@ -175,7 +180,9 @@ public static boolean estChaineValide (String chaine){
 
     @FXML
     private void click_on_modifier(ActionEvent event) throws SQLException {
-             int id_rese = Integer.parseInt(tx_reservation.getText());
+       
+        
+             int id_rese = Integer.parseInt(tx_id.getText());
          Date  date_debut=java.sql.Date.valueOf(dp_debut.getValue());
          Date  date_fin=java.sql.Date.valueOf(dp_fin.getValue());
          
@@ -205,8 +212,17 @@ public static boolean estChaineValide (String chaine){
             final Reservation selectedItem = tab_reserv.getSelectionModel().getSelectedItem();
         Reservation prod = ReservationService.GetById(selectedItem.getId());
         tf_descrip.setText(prod.getDescription_reservation());
+        tx_id.setText(String.valueOf(prod.getId()));
         tx_ressource.setText(String.valueOf(prod.getRessource_id()));
         tx_user.setText(String.valueOf(prod.getUser_id()));
+        Date datedeb =prod.getDate_debut();
+        LocalDate localdate=Instant.ofEpochMilli(datedeb.getTime()).atZone(ZoneId.systemDefault()).toLocalDate();
+       Date datefin =prod.getDate_fin();
+        LocalDate localdatee=Instant.ofEpochMilli(datefin.getTime()).atZone(ZoneId.systemDefault()).toLocalDate();
+        
+        dp_debut.setValue(localdate);
+         dp_fin.setValue(localdatee);
+
          try {
            
             QRCodeWriter qrCodeWriter = new QRCodeWriter();

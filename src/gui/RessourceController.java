@@ -5,6 +5,7 @@
  */
 package gui;
 
+import entity.Reservation;
 import entity.Ressource;
 import java.io.IOException;
 import java.net.URL;
@@ -30,6 +31,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import service.RessourceService;
@@ -52,16 +54,16 @@ public class RessourceController implements Initializable {
     @FXML
     private Button btn_ajout;
     @FXML
-    private TableColumn fx_id;
+    private TableColumn<Ressource,String> fx_id;
     @FXML
-    private TableColumn fx_type;
+    private TableColumn<Ressource,String> fx_type;
     @FXML
-    private TableColumn fx_dispo;
+    private TableColumn<Ressource,String> fx_dispo;
     @FXML
-    private TableColumn fx_nom;
+    private TableColumn<Ressource,String> fx_nom;
     private RessourceService RessourceService = new RessourceService();
     @FXML
-    private TableView  afficher_tab;
+    private TableView<Ressource>  afficher_tab;
     @FXML
     private Button btn_supp;
     @FXML
@@ -89,7 +91,8 @@ public class RessourceController implements Initializable {
             List<Ressource> catarticleList = RessourceService.AfficherRessource();
             searchField.textProperty().addListener((observable, oldValue, newValue) -> search());
       
-        
+             tf_id.setVisible(false);
+
         // affiche les données dans le tableau
         afficher_tab.getItems().setAll(catarticleList);
         
@@ -102,14 +105,14 @@ public static boolean estChaineValide (String chaine){
     return true;}
     @FXML
     private void click_on_ajouter(ActionEvent event) {
-    int id_ressource =Integer.parseInt( tf_id.getText());
+    //int id_ressource =Integer.parseInt( tf_id.getText());
         String type_ressource = tf_type.getText();
         String disponibilite_ressource = tf_dispo.getText();      
         String nom_ressource = tf_nom.getText();      
          if(estChaineValide(type_ressource)&&estChaineValide(disponibilite_ressource)&&estChaineValide(nom_ressource))
          {
             RessourceService cas=new RessourceService();
-   Ressource  ca= new Ressource(id_ressource, type_ressource, disponibilite_ressource,nom_ressource);
+   Ressource  ca= new Ressource( type_ressource, disponibilite_ressource,nom_ressource);
    cas.AjouterRessource(ca); 
          }
          else{
@@ -223,6 +226,16 @@ public static boolean estChaineValide (String chaine){
     afficher_tab.setItems(filteredList);
     
 }
+
+    @FXML
+    private void edp1(MouseEvent event) {
+          final Ressource selectedItem = afficher_tab.getSelectionModel().getSelectedItem();
+        Ressource prod = RessourceService.GetById(selectedItem.getId());
+        tf_id.setText(String.valueOf(prod.getId()));
+        tf_type.setText(prod.getType_ressource());
+        tf_dispo.setText(String.valueOf(prod.getDisponibilite_ressource()));
+        tf_nom.setText(String.valueOf(prod.getNom_ressource()));
+    }
     
     
 }
