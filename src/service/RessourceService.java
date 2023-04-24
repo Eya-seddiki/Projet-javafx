@@ -12,7 +12,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import utils.MyDB;
@@ -24,7 +26,6 @@ import utils.MyDB;
 public class RessourceService {
     
 
- 
   Connection cnx;
    // @Override
     
@@ -138,5 +139,40 @@ public class RessourceService {
          }
          return t;
 }
+ 
+// public Map<String, Integer> StatistiquesRessource() {
+//        Map<String, Integer> res = new HashMap<String, Integer>();
+//        try {
+//            String req = "Select disponibilite_ressource,count(*) from  `ressource` group by disponibilite_ressource";
+//            Statement st = cnx.createStatement();
+//            ResultSet RS = st.executeQuery(req);
+//            while (RS.next()) {
+//                res.put(RS.getString("disponibilite_ressource"), RS.getInt("count(*)"));
+//            }
+//        } catch (SQLException ex) {
+//            System.out.println(ex.getMessage());
+//        }
+//        return res;
+//    }
+
+    public Map<String, Integer> statistiquesRessource() {
+        Map<String, Integer> res = new HashMap<>();
+        try {
+            
+            String req = "Select disponibilite_ressource,count(*) from  `ressource` group by disponibilite_ressource";
+            cnx = MyDB.getInstance().getCnx();
+
+            Statement st = cnx.createStatement();
+
+            ResultSet RS = st.executeQuery(req);
+            while (RS.next()) {
+                res.put(RS.getString("disponibilite_ressource"), RS.getInt("count(*)"));
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return res;
+    }
+
      
 }

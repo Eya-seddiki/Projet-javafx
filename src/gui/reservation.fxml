@@ -13,7 +13,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="486.0" prefWidth="793.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ReservationController">
    <children>
-      <ImageView fitHeight="559.0" fitWidth="889.0" layoutX="-24.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="559.0" fitWidth="889.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../Downloads/ttytt.jpg" />
          </image>

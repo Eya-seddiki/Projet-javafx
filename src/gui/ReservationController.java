@@ -99,7 +99,7 @@ public class ReservationController implements Initializable {
         tb_user.setCellValueFactory(new PropertyValueFactory<>("user_id"));
             // récupère les données des utilisateurs depuis la base de données
             List<Reservation> catarticleList = ReservationService.AfficherReservation();
-      
+     // tf_descrip.setVisible(false);
         
         // affiche les données dans le tableau
         tab_reserv.getItems().setAll(catarticleList);

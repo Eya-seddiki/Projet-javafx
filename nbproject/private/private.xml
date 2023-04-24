@@ -2,22 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/Narimen/Desktop/transport/src/projetpi/ProjetPI.java</file>
-            <file>file:/C:/Users/Narimen/Desktop/transport/src/gui/sendEmail.fxml</file>
-            <file>file:/C:/Users/Narimen/Desktop/transport/src/transport/NewFXMain.java</file>
-            <file>file:/C:/Users/Narimen/Desktop/transport/src/gui/RessourceController.java</file>
-            <file>file:/C:/Users/Narimen/Desktop/transport/src/gui/SendEmailController.java</file>
-            <file>file:/C:/Users/Narimen/Desktop/transport/src/service/ReservationService.java</file>
-            <file>file:/C:/Users/Narimen/Desktop/transport/src/utils/MyDB.java</file>
-            <file>file:/C:/Users/Narimen/Desktop/transport/src/gui/ressource.fxml</file>
-            <file>file:/C:/Users/Narimen/Desktop/transport/src/entity/Reservation.java</file>
-            <file>file:/C:/Users/Narimen/Desktop/transport/src/gui/SendSMSController.java</file>
-            <file>file:/C:/Users/Narimen/Desktop/transport/src/transport/Transport.java</file>
-            <file>file:/C:/Users/Narimen/Desktop/transport/src/service/RessourceService.java</file>
-            <file>file:/C:/Users/Narimen/Desktop/transport/src/gui/ReservationController.java</file>
-            <file>file:/C:/Users/Narimen/Desktop/transport/src/gui/sendSMS.fxml</file>
-            <file>file:/C:/Users/Narimen/Desktop/transport/src/gui/reservation.fxml</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
