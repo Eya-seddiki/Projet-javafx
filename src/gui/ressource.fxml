@@ -68,5 +68,6 @@
             <Image url="@../../../../Downloads/logo.jpg" />
          </image>
       </ImageView>
+      <TextField fx:id="searchField" layoutX="501.0" layoutY="335.0" />
    </children>
 </AnchorPane>

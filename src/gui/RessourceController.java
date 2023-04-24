@@ -12,6 +12,8 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -68,6 +70,8 @@ public class RessourceController implements Initializable {
     private TextField rech;
     @FXML
     private Button btn_ajout1;
+    @FXML
+    private TextField searchField;
    
 
     /**
@@ -83,6 +87,7 @@ public class RessourceController implements Initializable {
         fx_nom.setCellValueFactory(new PropertyValueFactory<>("nom_ressource"));
             // récupère les données des utilisateurs depuis la base de données
             List<Ressource> catarticleList = RessourceService.AfficherRessource();
+            searchField.textProperty().addListener((observable, oldValue, newValue) -> search());
       
         
         // affiche les données dans le tableau
@@ -201,6 +206,21 @@ public static boolean estChaineValide (String chaine){
     stage.setScene(scene);
     stage.show();
     }
+    
+        private void search() {
+            String query = searchField.getText();
+            ObservableList<Ressource> filteredList = FXCollections.observableArrayList();
+               List<Ressource> ressourceList = RessourceService.AfficherRessource();
+
+            for (Ressource ressource : ressourceList) {
+                if (ressource.getType_ressource().toLowerCase().contains(query.toLowerCase())||ressource.getDisponibilite_ressource().toLowerCase().contains(query.toLowerCase())||ressource.getNom_ressource().toLowerCase().contains(query.toLowerCase())) {
+                    filteredList.add(ressource);
+                }
+            }
+    afficher_tab.setItems(filteredList);
+    
+}
+    
     
 }
 
