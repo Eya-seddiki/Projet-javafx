@@ -158,6 +158,8 @@ public static boolean estChaineValide (String chaine){
         afficher_tab.getItems().setAll(articleList);
         }
     }
+    
+    
 
     @FXML
     private void click_on_modifier(ActionEvent event) throws SQLException {
@@ -174,6 +176,7 @@ public static boolean estChaineValide (String chaine){
         afficher_tab.getItems().setAll(ressourceList);
     }
 
+    
     @FXML
     private void recherche(KeyEvent event) {
        if (event.getCode() == KeyCode.ENTER) {
