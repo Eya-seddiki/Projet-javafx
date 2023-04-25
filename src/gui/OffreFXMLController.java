@@ -42,9 +42,11 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -56,6 +58,7 @@ import services.OffreServices;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
+import org.controlsfx.control.Notifications;
 
 
 
@@ -77,9 +80,16 @@ public class OffreFXMLController implements Initializable {
 
     @FXML
     private TextField nomf;
+    @FXML
+    private TextField rech;
     
      @FXML
     private TableColumn<Offre, DatePicker> datef;
+     @FXML
+    private Button search;
+        @FXML
+    private TextField searchtxt;
+
 
     @FXML
     private TableColumn<Offre, Integer> idf;
@@ -113,9 +123,12 @@ public class OffreFXMLController implements Initializable {
 
      
     }}
-    
+    @FXML
+    void onActionSearch(ActionEvent event) {
+
+    }
     public void senddata()
-{
+{ //Remplir les colonnes :
     idf.setCellValueFactory(new PropertyValueFactory<Offre, Integer>("id_offre"));
     nmf.setCellValueFactory(new PropertyValueFactory<Offre,String>("nom_offre"));
     nmf.setEditable(true);
@@ -125,11 +138,25 @@ public class OffreFXMLController implements Initializable {
     tableprod.setItems(FXCollections.observableArrayList( ps.afficherOffre()));
     ObservableList<Offre> oList = FXCollections.observableArrayList(ps.afficherOffre());
         FilteredList<Offre> filteredData = new FilteredList<Offre>(oList, b -> true);
-        
+        searchtxt.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate( m -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if (m.getNom_offre().toLowerCase().indexOf(lowerCaseFilter)!=-1) {
+                    return true;
+                } else return false;
+            });
+        });
         SortedList<Offre> sortedList = new SortedList <Offre>(filteredData);
         sortedList.comparatorProperty().bind(tableprod.comparatorProperty())    ;
         tableprod.setItems(sortedList);
     
+        ///////////////
+          
 }
      @FXML
     void onoffredatedit(TableColumn.CellEditEvent<Offre, String> event) {
@@ -160,7 +187,7 @@ private boolean NoDate() {
         if (comparisonResult <= 0) {
         // myDate est antérieure à currentDate
         test = true;
-        } else if (comparisonResult > 0) {
+        } else if (comparisonResult >=0) {
          // myDate est postérieure à currentDate
          test = false;
         }
@@ -195,12 +222,26 @@ private boolean NoDate() {
              System.out.println(datee);
              ps.ajouterOffre(f);
              senddata();
+                      Notifications notificationBuilder = Notifications.create()
+        .title("Produit Ajouter")
+        .text("votre produit a été ajoutee avec succes")
+        .graphic(null)
+        .hideAfter(javafx.util.Duration.seconds(5))
+        .position(Pos.BOTTOM_RIGHT)
+        .onAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("ajout avec succes");
+            }
+               });
+        notificationBuilder.showConfirm();
+    }
        
              
            
           
          }
 
+
 }
     
-}

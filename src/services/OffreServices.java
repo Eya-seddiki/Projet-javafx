@@ -81,6 +81,68 @@ public class OffreServices  {
   }
   
   
+  public List<Offre> recupereroffre() throws SQLException {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        List<Offre> offres = new ArrayList<>();
+        String s = "select * from offre";
+        Statement st = conn.createStatement();// nesta3leha fel affichage
+        ResultSet rs = st.executeQuery(s);
+        while (rs.next()) {
+            Offre f = new Offre();
+            f.setNom_offre(rs.getString("nom_offre"));
+                f.setDatepub_offre(rs.getDate("datepub_offre"));
+           
+            f.setId_offre(rs.getInt("id_offre"));
+            offres.add(f);
+
+        }
+        return offres;
+    }
+  public Offre findoffre(int id_offre) {
+		Offre f = new Offre();
+		try {
+			String req = "Select * from offre where id_offre =" + id_offre;
+			ste = conn.createStatement();
+
+			ResultSet RS = ste.executeQuery(req);
+			RS.first();
+			f.setId_offre(RS.getInt("id_offre"));
+			 f.setNom_offre(RS.getString("nom_offre"));
+                         f.setDatepub_offre(RS.getDate("datepub_offre"));
+           //     f.setDatepub_offre(RS.getDate("datepub_offre"));
+			ste.close();
+		} catch (SQLException ex) {
+			System.err.println("Probleme lors du lecture d'un Album");
+			System.out.println(ex.getMessage());
+		}
+
+		return (f != null) ? f : null;
+	}
+  public List<Offre> afficherOffree(int id_offre){
+       List<Offre> list = new ArrayList<>();
+       try {
+           String req ="Select * from offre where id_offre ="+id_offre;
+         
+           Statement st = conn.createStatement();
+           ResultSet RS = st.executeQuery(req);
+           while (RS.next()) {
+            Offre f = new Offre();
+             f.setId_offre(RS.getInt(1));
+                f.setNom_offre(RS.getString("nom_offre"));
+                f.setDatepub_offre(RS.getDate("datepub_offre"));
+             
+                 
+               list.add(f);
+               
+           }
+       }catch (SQLException ex) {
+           System.out.println(ex.getMessage());
+   } 
+      return list; 
+       
+  }
+  
    public void modifieroffre (Offre F){
       
       try {

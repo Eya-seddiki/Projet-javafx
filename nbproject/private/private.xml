@@ -3,17 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/dell/Documents/pidevjava/src/interfaces/IdemandeController.java</file>
-            <file>file:/C:/Users/dell/Documents/pidevjava/src/services/OffreServices.java</file>
-            <file>file:/C:/Users/dell/Documents/pidevjava/src/interfaces/IoffreController.java</file>
-            <file>file:/C:/Users/dell/Documents/pidevjava/src/model/Demande.java</file>
-            <file>file:/C:/Users/dell/Documents/pidevjava/src/gui/demandeFXML.fxml</file>
-            <file>file:/C:/Users/dell/Documents/pidevjava/src/gui/OffreFXMLController.java</file>
-            <file>file:/C:/Users/dell/Documents/pidevjava/src/pidevjava/Pidevjava.java</file>
-            <file>file:/C:/Users/dell/Documents/pidevjava/src/gui/NewFXMain.java</file>
-            <file>file:/C:/Users/dell/Documents/pidevjava/src/model/Offre.java</file>
-            <file>file:/C:/Users/dell/Documents/pidevjava/src/services/DemandeServices.java</file>
-            <file>file:/C:/Users/dell/Documents/pidevjava/src/gui/DemandeFXMLController.java</file>
+            <file>file:/C:/Users/dell/Desktop/ado_doc%20java/pidevjava/src/gui/NewFXMain.java</file>
+            <file>file:/C:/Users/dell/Desktop/ado_doc%20java/pidevjava/src/gui/demandefFXML.fxml</file>
+            <file>file:/C:/Users/dell/Desktop/ado_doc%20java/pidevjava/src/gui/offreFXML.fxml</file>
+            <file>file:/C:/Users/dell/Desktop/ado_doc%20java/pidevjava/src/Controller/DemnadeController.java</file>
+            <file>file:/C:/Users/dell/Desktop/ado_doc%20java/pidevjava/src/gui/OffrefrontFXMLController.java</file>
+            <file>file:/C:/Users/dell/Desktop/ado_doc%20java/pidevjava/src/interfaces/IoffreController.java</file>
+            <file>file:/C:/Users/dell/Desktop/ado_doc%20java/pidevjava/src/services/mail.java</file>
+            <file>file:/C:/Users/dell/Desktop/ado_doc%20java/pidevjava/src/Controller/OffreController.java</file>
+            <file>file:/C:/Users/dell/Desktop/ado_doc%20java/pidevjava/src/pidevjava/Pidevjava.java</file>
+            <file>file:/C:/Users/dell/Desktop/ado_doc%20java/pidevjava/src/gui/offrefrontFXML.fxml</file>
         </group>
     </open-files>
 </project-private>

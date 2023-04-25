@@ -11,11 +11,18 @@ package model;
  */
 public class Demande {
        private int id_demande,id_offre;
-        private int id_user=1;
+        private int id_user;
     private String cv,description,traitement="en cours de traitement";
 
     public Demande(int id_offre, String cv, String description) {
         this.id_offre = id_offre;
+        this.cv = cv;
+        this.description = description;
+    }
+
+    public Demande(int id_offre, int id_user, String cv, String description) {
+        this.id_offre = id_offre;
+        this.id_user = id_user;
         this.cv = cv;
         this.description = description;
     }
