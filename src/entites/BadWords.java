@@ -15,7 +15,7 @@ import java.util.Map;
 
 /**
  *
- * @author Asus
+ * @author 21656
  */
 public class BadWords {
   

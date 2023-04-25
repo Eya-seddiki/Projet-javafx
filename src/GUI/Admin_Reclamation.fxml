@@ -81,7 +81,7 @@
             <Pane fx:id="pnl_abonnement" prefHeight="554.0" prefWidth="793.0" style="-fx-background-color: #FFF;">
                <children>
                   <TextField fx:id="txt_Seach" layoutX="534.0" layoutY="43.0" prefHeight="27.0" prefWidth="139.0" promptText="search" style="-fx-border-color: #64c3c2; -fx-background-radius: 200; -fx-border-radius: 200;" styleClass="combo-box" />
-                  <TableView fx:id="tabview" layoutX="36.0" layoutY="111.0" prefHeight="318.0" prefWidth="695.0" style="-fx-background-color: #fff; -fx-border-color: #333333;" styleClass="button2" stylesheets="@../css/fullpackstyling2.css">
+                  <TableView fx:id="tabview" layoutX="21.0" layoutY="107.0" prefHeight="318.0" prefWidth="695.0" style="-fx-background-color: #fff; -fx-border-color: #333333;" styleClass="button2" stylesheets="@../css/fullpackstyling2.css">
                     <columns>
                       <TableColumn fx:id="col_nom_reclamation" prefWidth="75.0" text="nom" />
                       <TableColumn fx:id="col_prenom_reclamation" prefWidth="75.0" text="prenom" />

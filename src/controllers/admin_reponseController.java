@@ -5,8 +5,11 @@
  */
 package controllers;
 
+import Alert.AlertDialog;
 import Service.reclamation_Service;
 import Service.reponse_Service;
+import Utils.mail;
+import entites.reclamation;
 import entites.reponse;
 import java.io.File;
 import java.io.IOException;
@@ -207,16 +210,27 @@ public class admin_reponseController implements Initializable {
     }
 
     @FXML
-    private void ajouter_reponse(ActionEvent event) throws SQLException {
+    private void ajouter_reponse(ActionEvent event) throws SQLException, Exception {
         if (txt_reponse.getText().equals("")) {
-            System.out.println("Champ vide de reponse");//cntrl sais
+             AlertDialog.showNotification("Error !", "Champ vide de reponse", AlertDialog.image_cross);
+       
 
         } else if (txt_reponse.getText().matches("^[0-9]+$")) {
-            System.out.println("il faut saisir des caracteres  ! reponse");
+             AlertDialog.showNotification("Error !", "il faut saisir des caracteres  !", AlertDialog.image_cross);
+         
 
+            
+       
         } else {
-            reponse res = new reponse(txt_reponse.getText(), combo_reclamation.getSelectionModel().getSelectedItem());
+               AlertDialog.showNotification("Ajout ", "Ajout", AlertDialog.image_checked);
+             reponse res = new reponse(txt_reponse.getText(), combo_reclamation.getSelectionModel().getSelectedItem());
             serviceReponse.Ajouter(res);
+            serviceReclamaion.Traitee(combo_reclamation.getSelectionModel().getSelectedItem());
+           reclamation rec = serviceReclamaion.Affichertout().stream().filter(s -> {return s.getId_reclamation() == (combo_reclamation.getSelectionModel().getSelectedItem());}).findAny().orElse(null);
+            System.out.println(rec); 
+            String email = serviceReclamaion.email_user_Traitee(combo_reclamation.getSelectionModel().getSelectedItem());
+            mail.envoi(email, "Traitment de reclamation", "Nous annoncons , <br> que"+txt_reponse.getText() +"  \n ");
+           
 
             refreche();
         }

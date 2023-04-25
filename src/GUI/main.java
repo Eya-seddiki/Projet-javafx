@@ -21,12 +21,12 @@ public class main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         //front
- // Parent root = FXMLLoader.load(getClass().getResource("Front.fxml"));
+  //Parent root = FXMLLoader.load(getClass().getResource("Front.fxml"));//recherche la chemin de fxml//
         //admin
   Parent root = FXMLLoader.load(getClass().getResource("Admin_Reclamation.fxml"));
         primaryStage.setScene(new Scene(root));
         //set stage borderless
-        primaryStage.initStyle(StageStyle.TRANSPARENT);
+        primaryStage.initStyle(StageStyle.TRANSPARENT);//bordure de la fentre 
 
         //drag it here
         root.setOnMousePressed(event -> {
@@ -39,7 +39,7 @@ public class main extends Application {
             primaryStage.setY(event.getScreenY() - y);
 
         });
-        primaryStage.show();
+        primaryStage.show();//Afficher la fenetre de javafx
     
     
     }

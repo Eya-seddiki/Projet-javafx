@@ -5,6 +5,7 @@
  */
 package controllers;
 
+import Alert.AlertDialog;
 import Service.reclamation_Service;
 import Service.reponse_Service;
 import entites.BadWords;
@@ -65,8 +66,6 @@ public class FrontCrontroller implements Initializable {
     @FXML
     private TextField txtdestination_reclamation;
     @FXML
-    private TextField txttype_reclamation;
-    @FXML
     private Button btn_Reclamation;
     @FXML
     private Button btn_Sign_Out;
@@ -95,7 +94,7 @@ public class FrontCrontroller implements Initializable {
                     @Override
                     public void updateItem(String item, boolean empty) {
                         super.updateItem(item, empty);
-                        if (empty) {
+                        if (empty) {//Si la cellelule est vide 
                             setGraphic(null);
                             setText(null);
                         } else {
@@ -115,8 +114,12 @@ public class FrontCrontroller implements Initializable {
                                 }
 
                             });
-                            setGraphic(btn);
+                        
+                            if (!getTableView().getItems().get(getIndex()).getType_reclamation().equals("Traite")) {
+                                  setGraphic(btn);
                             setText(null);
+                            }
+                          
                         }
                     }
                 };
@@ -143,7 +146,8 @@ public class FrontCrontroller implements Initializable {
         col_id_rec.setCellValueFactory(new PropertyValueFactory<>("id_reclamation"));
         tab_Reclamation.getItems().clear();
 
-        tab_Reclamation.setItems(serviceReclamation.Affichertout());
+        // 1 rahi statique maneha user id teeou 1 k bch tamlou integration id 1 ttbdel b seesion id
+        tab_Reclamation.setItems(serviceReclamation.Affichertout_user(1));
 
     }
 
@@ -153,55 +157,63 @@ public class FrontCrontroller implements Initializable {
 
         {
             if (txtnom_reclamation.getText().equals("")) {
-                System.out.println("Champ vide de txtnom_reclamation");//cntrl sais
+                  AlertDialog.showNotification("Error !", "Champ vide de txtnom_reclamation", AlertDialog.image_cross);
+              
 
             } else if (txtnom_reclamation.getText().matches("^[0-9]+$")) {
-                System.out.println("il faut saisir des caracteres  ! txtnom_reclamation");
+                AlertDialog.showNotification("Error !", "il faut saisir des caracteres  ! txtnom_reclamation", AlertDialog.image_cross);
 
             } else if (BadWords.filterText(txtnom_reclamation.getText())) {
-                System.out.println("bad words are not allowed ! txtnom_reclamation");
+                       AlertDialog.showNotification("Error !", "bad words are not allowed ! txtnom_reclamation", AlertDialog.image_cross);
+
             } else if (txtprenom_reclamation.getText().equals("")) {
-                System.out.println("Champ vide de txtprenom_reclamation");//cntrl sais
+                AlertDialog.showNotification("Error !", "Champ vide de txtprenom_reclamation", AlertDialog.image_cross);
+           
 
             } else if (txtprenom_reclamation.getText().matches("^[0-9]+$")) {
-                System.out.println("il faut saisir des caracteres  ! txtprenom_reclamation");
+             AlertDialog.showNotification("Error !", "il faut saisir des caracteres  ! txtprenom_reclamation", AlertDialog.image_cross);
+             
 
             } else if (BadWords.filterText(txtprenom_reclamation.getText())) {
-                System.out.println("bad words are not allowed ! txtprenom_reclamation");
+                  AlertDialog.showNotification("Error !", "bad words are not allowed ! txtprenom_reclamation", AlertDialog.image_cross);
+             
             } else if (txtprenom_reclamation.getText().equals("")) {
-                System.out.println("Champ vide de txtprenom_reclamation");//cntrl sais
+                AlertDialog.showNotification("Error !", "Champ vide de txtprenom_reclamation", AlertDialog.image_cross);
+            //cntrl sais
 
             } else if (txtprenom_reclamation.getText().matches("^[0-9]+$")) {
-                System.out.println("il faut saisir des caracteres  ! txtprenom_reclamation");
+                 AlertDialog.showNotification("Error !", "il faut saisir des caracteres  ! txtprenom_reclamation", AlertDialog.image_cross);
+              
 
             } else if (BadWords.filterText(txtprenom_reclamation.getText())) {
-                System.out.println("bad words are not allowed ! txtprenom_reclamation");
+                 AlertDialog.showNotification("Error !", "bad words are not allowed ! txtprenom_reclamation", AlertDialog.image_cross);
+            
             } else if (txtdestination_reclamation.getText().equals("")) {
-                System.out.println("Champ vide de txtdestination_reclamation");//cntrl sais
+                       AlertDialog.showNotification("Error !", "Champ vide de txtdestination_reclamation", AlertDialog.image_cross);
+            //cntrl sais
 
             } else if (txtdestination_reclamation.getText().matches("^[0-9]+$")) {
-                System.out.println("il faut saisir des caracteres  ! txtdestination_reclamation");
+                AlertDialog.showNotification("Error !", "il faut saisir des caracteres  ! txtdestination_reclamation", AlertDialog.image_cross);
+              
 
             } else if (BadWords.filterText(txtdestination_reclamation.getText())) {
-                System.out.println("bad words are not allowed ! txtdestination_reclamation");
-            } else if (txttype_reclamation.getText().equals("")) {
-                System.out.println("Champ vide de txttype_reclamation");//cntrl sais
-
-            } else if (txttype_reclamation.getText().matches("^[0-9]+$")) {
-                System.out.println("il faut saisir des caracteres  ! txttype_reclamation");
-
-            } else if (BadWords.filterText(txttype_reclamation.getText())) {
-                System.out.println("bad words are not allowed ! txttype_reclamation");
-            } else if (txtdescription_reclamation.getText().equals("")) {
-                System.out.println("Champ vide de txtdescription_reclamation");//cntrl sais
+                AlertDialog.showNotification("Error !", "bad words are not allowed ! txtdestination_reclamation", AlertDialog.image_cross);
+                
+            }  else if (txtdescription_reclamation.getText().equals("")) {
+                AlertDialog.showNotification("Error !", "Champ vide de txtdescription_reclamation", AlertDialog.image_cross);
+              //cntrl sais
 
             } else if (txtdescription_reclamation.getText().matches("^[0-9]+$")) {
-                System.out.println("il faut saisir des caracteres  ! txtdescription_reclamation");
+                AlertDialog.showNotification("Error !", "il faut saisir des caracteres  ! txtdescription_reclamation", AlertDialog.image_cross);
+           
 
             } else if (BadWords.filterText(txtdescription_reclamation.getText())) {
-                System.out.println("bad words are not allowed ! txtdescription_reclamation");
+                AlertDialog.showNotification("Error !", "bad words are not allowed ! txtdescription_reclamation", AlertDialog.image_cross);
+           
             } else {
-                reclamation rec = new reclamation(txtnom_reclamation.getText(), txtprenom_reclamation.getText(), txtdestination_reclamation.getText(), txtdescription_reclamation.getText(), txttype_reclamation.getText(), 1);
+                AlertDialog.showNotification("Ajout ", "Ajout", AlertDialog.image_checked);
+                // 1 lahne tttbdel zeda b id ta session
+                reclamation rec = new reclamation(txtnom_reclamation.getText(), txtprenom_reclamation.getText(), txtdestination_reclamation.getText(), txtdescription_reclamation.getText(), "Non traitee", 1);
                 serviceReclamation.Ajouter(rec);
                 refreche_reclamation();
             }
@@ -221,7 +233,6 @@ public class FrontCrontroller implements Initializable {
         txtnom_reclamation.clear();
         txtprenom_reclamation.clear();
         txtdestination_reclamation.clear();
-        txttype_reclamation.clear();
         txtdescription_reclamation.clear();
 
     }
