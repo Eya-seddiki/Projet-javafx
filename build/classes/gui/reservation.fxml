@@ -6,48 +6,44 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="486.0" prefWidth="793.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ReservationController">
    <children>
-      <ImageView fitHeight="559.0" fitWidth="889.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../Downloads/ttytt.jpg" />
-         </image>
-      </ImageView>
-      <TextField fx:id="tx_user" layoutX="136.0" layoutY="325.0" />
-      <TextField fx:id="tx_ressource" layoutX="136.0" layoutY="268.0" />
-      <TextField fx:id="tf_descrip" layoutX="136.0" layoutY="214.0" />
-      <Label layoutX="43.0" layoutY="98.0" text="date debut" textFill="#4a4b4d">
+      <ImageView fitHeight="559.0" fitWidth="889.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" />
+      <TextField fx:id="tx_user" layoutX="304.0" layoutY="491.0" />
+      <TextField fx:id="tx_ressource" layoutX="300.0" layoutY="455.0" />
+      <TextField fx:id="tf_descrip" layoutX="300.0" layoutY="418.0" />
+      <Label layoutX="207.0" layoutY="360.0" text="date debut" textFill="#4a4b4d">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Label>
-      <Label layoutX="60.0" layoutY="161.0" text="date fin" textFill="#4a4b4d">
+      <Label layoutX="209.0" layoutY="389.0" text="date fin" textFill="#4a4b4d">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Label>
-      <Label layoutX="51.0" layoutY="218.0" text="description" textFill="#4a4b4d">
+      <Label layoutX="206.0" layoutY="430.0" text="description" textFill="#4a4b4d">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Label>
-      <Label layoutX="57.0" layoutY="272.0" text="ressource" textFill="#4a4b4d">
+      <Label layoutX="212.0" layoutY="457.0" text="ressource" textFill="#4a4b4d">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Label>
-      <Label layoutX="74.0" layoutY="326.0" text="user" textFill="#4a4b4d">
+      <Label layoutX="229.0" layoutY="494.0" text="user" textFill="#4a4b4d">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Label>
-      <DatePicker fx:id="dp_debut" layoutX="136.0" layoutY="97.0" />
-      <DatePicker fx:id="dp_fin" layoutX="136.0" layoutY="158.0" />
-      <Button layoutX="173.0" layoutY="372.0" mnemonicParsing="false" onAction="#click_on_ajouetr" style="-fx-background-color: #5499C7;" text="Ajouter" textFill="#fcf5f5">
+      <DatePicker fx:id="dp_debut" layoutX="300.0" layoutY="357.0" />
+      <DatePicker fx:id="dp_fin" layoutX="300.0" layoutY="387.0" />
+      <Button layoutX="706.0" layoutY="45.0" mnemonicParsing="false" onAction="#click_on_ajouetr" style="-fx-background-color: #5499C7;" text="Ajouter" textFill="#fcf5f5">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <TableView fx:id="tab_reserv" layoutX="322.0" layoutY="117.0" onMouseClicked="#edp1" prefHeight="223.0" prefWidth="451.0" style="-fx-background-color: #F6F1F1;">
+      <TableView fx:id="tab_reserv" layoutX="257.0" layoutY="93.0" onMouseClicked="#edp1" prefHeight="223.0" prefWidth="451.0" style="-fx-background-color: #F6F1F1;">
         <columns>
           <TableColumn fx:id="tb_id" prefWidth="75.0" text="id" />
           <TableColumn fx:id="tb_debut" prefWidth="75.0" text="date debut" />
@@ -57,20 +53,21 @@
             <TableColumn fx:id="tb_user" prefWidth="75.0" text="user" />
         </columns>
       </TableView>
-      <Button fx:id="btn_supprimer" layoutX="317.0" layoutY="385.0" mnemonicParsing="false" onAction="#click_on_supprimer" style="-fx-background-color: #5499C7;" text="Supprimer" textFill="#fcf5f5">
+      <Button fx:id="btn_supprimer" layoutX="266.0" layoutY="528.0" mnemonicParsing="false" onAction="#click_on_supprimer" style="-fx-background-color: #5499C7;" text="Supprimer" textFill="#fcf5f5">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <Button fx:id="btn_modifier" layoutX="322.0" layoutY="350.0" mnemonicParsing="false" onAction="#click_on_modifier" style="-fx-background-color: #5499C7;" text="Modifier" textFill="#fcf5f5">
+      <Button fx:id="btn_modifier" layoutX="540.0" layoutY="528.0" mnemonicParsing="false" onAction="#click_on_modifier" style="-fx-background-color: #5499C7;" text="Modifier" textFill="#fcf5f5">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <Button layoutX="31.0" layoutY="515.0" mnemonicParsing="false" onAction="#click_on_Mail" style="-fx-background-color: #5499C7;" text="Mail" textFill="#fcf5f5">
+      <Button layoutX="214.0" layoutY="528.0" mnemonicParsing="false" onAction="#click_on_Mail" style="-fx-background-color: #5499C7;" text="Mail" textFill="#fcf5f5">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <ImageView fx:id="qrcodee" fitHeight="137.0" fitWidth="136.0" layoutX="619.0" layoutY="362.0" pickOnBounds="true" preserveRatio="true" />
-      <TextField fx:id="tx_id" layoutX="145.0" layoutY="45.0" />
+      <ImageView fx:id="qrcodee" fitHeight="137.0" fitWidth="136.0" layoutX="622.0" layoutY="384.0" pickOnBounds="true" preserveRatio="true" />
+      <TextField fx:id="tx_id" layoutX="304.0" layoutY="324.0" />
+      <VBox layoutX="1.0" prefHeight="564.0" prefWidth="187.0" style="-fx-background-color: #1472B0;" />
    </children>
 </AnchorPane>
