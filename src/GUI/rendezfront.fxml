@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #A1A5F3;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.RendezfrontController">
+   <children>
+      <VBox prefHeight="667.0" prefWidth="182.0" style="-fx-background-color: #F0F0FC;">
+         <children>
+            <ImageView fitHeight="183.0" fitWidth="222.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@logo.PNG" />
+               </image>
+            </ImageView>
+         </children>
+      </VBox>
+      <Label layoutX="205.0" layoutY="156.0" prefHeight="25.0" prefWidth="94.0" text="NOM" textFill="#755dff">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="570.0" layoutY="156.0" text="PRENOM" textFill="#6159ec" textOverrun="WORD_ELLIPSIS">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="215.0" layoutY="237.0" text="LIEU" textFill="#6159ec">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="570.0" layoutY="232.0" text="EMAIL" textFill="#6159ec">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="215.0" layoutY="310.0" text="DATE" textFill="#6159ec">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="571.0" layoutY="310.0" prefHeight="26.0" prefWidth="52.0" text="USER" textFill="#6159ec">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="nomtf" layoutX="282.0" layoutY="148.0" prefHeight="44.0" prefWidth="166.0" style="-fx-background-color: #2697e7;" />
+      <TextField fx:id="lieutf" layoutX="282.0" layoutY="224.0" prefHeight="44.0" prefWidth="166.0" style="-fx-background-color: #2697e7;" />
+      <TextField fx:id="prenomtf" layoutX="662.0" layoutY="148.0" prefHeight="44.0" prefWidth="174.0" style="-fx-background-color: #2697e7; -fx-cursor: #00000;" />
+      <TextField fx:id="emailtf" layoutX="662.0" layoutY="224.0" prefHeight="44.0" prefWidth="174.0" style="-fx-background-color: #2697e7;" />
+      <TextField fx:id="usertf" layoutX="662.0" layoutY="302.0" prefHeight="44.0" prefWidth="174.0" style="-fx-background-color: #2697e7;" />
+      <DatePicker fx:id="datetf" layoutX="282.0" layoutY="302.0" prefHeight="44.0" prefWidth="166.0" style="-fx-background-color: #000000;" />
+      <Button fx:id="btnrendez" layoutX="662.0" layoutY="425.0" mnemonicParsing="false" onAction="#ajouterrendezvous" prefHeight="44.0" prefWidth="141.0" style="-fx-background-color: #057aff; -fx-background-radius: 30;" text="Prenez Rendez-Vous" />
+   </children>
+</AnchorPane>

@@ -265,4 +265,40 @@ try {
         return filename;
     }
     
+    
+      public List<Rendezvous> chercherEvent(String chaine) {
+        String sql = "SELECT * FROM Rendezvous WHERE (nom_rendezvous LIKE ? or lieu_rendezvous LIKE ?  ) order by nom_rendezvous ";
+        //Connection cnx= Maconnexion.getInstance().getCnx();
+        String ch = "%" + chaine + "%";
+        List<Rendezvous> myList = new ArrayList<>();
+        try {
+
+            Statement ste = cnx.createStatement();
+            // PreparedStatement pst = myCNX.getCnx().prepareStatement(requete6);
+            PreparedStatement stee = cnx.prepareStatement(sql);
+            stee.setString(1, ch);
+            stee.setString(2, ch);
+
+            ResultSet rs = stee.executeQuery();
+ while (rs.next()) {
+            Rendezvous D = new Rendezvous();
+          p.setIdRendezvous(rs.getInt(1));
+                p.setNomRendezvous(rs.getString("nom_rendezvous"));
+                  p.setPrenomRendezvous(rs.getString("prenom_rendezvous"));
+                    p.setLieuRendezvous(rs.getString("lieu_rendezvous"));
+                      p.setEmailRendezvous(rs.getString("email_rendezvous"));
+                        p.setDateRendezvous(rs.getDate("date_rendezvous"));
+                        p.setColor(rs.getString("color"));
+                      
+              
+                
+               myList.add(D);
+               
+           }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return myList;
+    }
+    
 }

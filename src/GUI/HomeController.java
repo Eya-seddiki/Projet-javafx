@@ -6,6 +6,7 @@
 package GUI;
 
 import Entities.Rendezvous;
+import Services.SMSSender;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -60,6 +61,11 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.controlsfx.control.Notifications;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javax.mail.MessagingException;
+import Services.SendMail;
+import javafx.scene.input.KeyEvent;
+
+
 
 /**
  * FXML Controller class
@@ -116,6 +122,10 @@ public class HomeController implements Initializable {
     private Button pauseMusicButton;
     @FXML
     private ImageView QrCode;
+    @FXML
+    private Button map;
+    @FXML
+    private TextField searchField;
 
 
     /**
@@ -156,7 +166,7 @@ public class HomeController implements Initializable {
     }
 
     @FXML
-    private void ajouterrendezvous(ActionEvent event) throws SQLException {
+    private void ajouterrendezvous(ActionEvent event) throws SQLException, MessagingException {
         
         
         
@@ -178,6 +188,7 @@ public class HomeController implements Initializable {
        
             else
             {
+                
         Rendezvous r = new Rendezvous();
         r.setNomRendezvous(nomtf.getText());
         r.setPrenomRendezvous(prenomtf.getText());
@@ -194,7 +205,12 @@ public class HomeController implements Initializable {
             alert.setTitle("Information ");
             alert.setHeaderText("Event add");
             alert.setContentText("Event added successfully!");
-            alert.showAndWait();      
+            alert.showAndWait(); 
+            SMSSender SS = new SMSSender() ; 
+        SS.SMSSender();
+           // SendMail.sendMail("ala.chebil@esprit.tn");
+           
+            
         try {
             SR.add(r);
             reset();
@@ -203,6 +219,7 @@ public class HomeController implements Initializable {
         }  
 //        getEvents();
          senddata();
+        
         
     }}
      private void reset() {
@@ -355,9 +372,9 @@ String filename="C:\\Users\\HP\\Desktop\\semestre 2\\java\\fichierExcel\\dataEve
     HSSFWorkbook hwb=new HSSFWorkbook();
     HSSFSheet sheet =  hwb.createSheet("new sheet");
     HSSFRow rowhead=   sheet.createRow((short)0);
-rowhead.createCell((short) 0).setCellValue("nom evenement");
-rowhead.createCell((short) 1).setCellValue("type d'evenement");
-rowhead.createCell((short) 2).setCellValue("description ");
+rowhead.createCell((short) 0).setCellValue("nom ");
+rowhead.createCell((short) 1).setCellValue("prenom");
+rowhead.createCell((short) 2).setCellValue("lieu ");
 List<Rendezvous> evenements = SR.recupererrendezVous();
   for (int i = 0; i < evenements.size(); i++) {          
 HSSFRow row=   sheet.createRow((short)i);
@@ -397,9 +414,10 @@ System.out.println("Your excel file has been generated!");
         com.itextpdf.text.Document document = new com.itextpdf.text.Document();
 
         try {
+            
             PdfWriter.getInstance(document, new FileOutputStream(String.valueOf(DateLyoum + ".pdf")));//yyyy-MM-dd
             document.open();
-            Paragraph ph1 = new Paragraph("Voici un rapport détaillé de notre application qui contient tous les RENDEZ VOUS . Pour chaque événement, nous fournissons des informations telles que la date d'aujourdhui :" + DateRapport );
+            Paragraph ph1 = new Paragraph("Voici un rapport détaillé de notre application qui contient tous les RENDEZ VOUS . Pour chaque rendez-vous, nous fournissons des informations telles que la date d'aujourdhui :" + DateRapport );
             Paragraph ph2 = new Paragraph(".");
             PdfPTable table = new PdfPTable(4);
             //On créer l'objet cellule.
@@ -408,7 +426,7 @@ System.out.println("Your excel file has been generated!");
             table.addCell("nom_RENDEZVOUS");
             table.addCell("prenom");
             table.addCell("lieu");
-            table.addCell("date_event");
+            table.addCell("date");
             Rendezvous r = new Rendezvous();
             SR.recupererrendezVous().forEach(e
                     -> {
@@ -428,6 +446,7 @@ System.out.println("Your excel file has been generated!");
             document.add(ph1);
             document.add(ph2);
             document.add(table);
+            
              } catch (Exception e) {
             System.out.println(e);
         }
@@ -470,5 +489,44 @@ System.out.println("Your excel file has been generated!");
         notificationBuilder.show();
     }
 
+    @FXML
+    private void map(ActionEvent event) throws IOException {
+
+    Parent previousScene = FXMLLoader.load(getClass().getResource("Map.fxml"));
+    Scene scene = new Scene(previousScene);
+    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    stage.setScene(scene);
+    stage.show();
     
-}
+    }
+    public void setlocal(String ad){
+        this.lieutf.setText(ad);
+    }
+
+    @FXML
+    private void search(KeyEvent event) {
+        
+        
+        // TODO
+        
+        List<Rendezvous> rendezvouss = SR.chercherEvent(searchField.getText());
+        ObservableList<Rendezvous> olp = FXCollections.observableArrayList(rendezvouss);
+        tableRendez.setItems(olp);
+        nomTV.setCellValueFactory(new PropertyValueFactory("nom_rendezvous"));
+        prenomTV.setCellValueFactory(new PropertyValueFactory("prenom_rendezvous"));
+        emailTv.setCellValueFactory(new PropertyValueFactory("email_rendezvous"));
+        lieuTV.setCellValueFactory(new PropertyValueFactory("lieu_rendezvous"));
+        useridTV.setCellValueFactory(new PropertyValueFactory("user_id"));
+        dateTV.setCellValueFactory(new PropertyValueFactory("date_rendezvous"));
+        
+        // this.delete();
+    }//get events
+
+        
+        
+        
+    }
+    
+
+    
+

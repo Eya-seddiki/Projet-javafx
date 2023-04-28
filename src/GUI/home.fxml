@@ -8,25 +8,47 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="521.0" prefWidth="988.0" style="-fx-background-image: #A1A5F3;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.HomeController">
    <children>
-      <Label layoutX="74.0" layoutY="52.0" prefHeight="25.0" prefWidth="94.0" text="NOM" />
-      <Label layoutX="339.0" layoutY="56.0" text="PRENOM" />
-      <Label layoutX="74.0" layoutY="116.0" text="LIEU" />
-      <Label layoutX="339.0" layoutY="116.0" text="EMAIL" />
-      <Label layoutX="74.0" layoutY="168.0" text="DATE" />
-      <Label layoutX="339.0" layoutY="168.0" text="USER" />
-      <TextField fx:id="nomtf" layoutX="154.0" layoutY="52.0" />
-      <TextField fx:id="lieutf" layoutX="154.0" layoutY="112.0" />
-      <TextField fx:id="prenomtf" layoutX="436.0" layoutY="52.0" />
-      <TextField fx:id="emailtf" layoutX="437.0" layoutY="112.0" />
-      <TextField fx:id="usertf" layoutX="438.0" layoutY="164.0" />
-      <Button fx:id="btnrendez" layoutX="738.0" layoutY="235.0" mnemonicParsing="false" onAction="#ajouterrendezvous" prefHeight="26.0" prefWidth="106.0" text="ajouter" />
-      <DatePicker fx:id="datetf" layoutX="154.0" layoutY="164.0" prefHeight="26.0" prefWidth="159.0" />
-      <Button fx:id="btnmodif" layoutX="738.0" layoutY="289.0" mnemonicParsing="false" onAction="#modifierrendezvous" prefHeight="36.0" prefWidth="150.0" text="modifier " />
-      <Button fx:id="btnsupp" layoutX="738.0" layoutY="362.0" mnemonicParsing="false" onAction="#supprimerrendezvous" prefHeight="36.0" prefWidth="150.0" text="supprimer" />
-      <TableView fx:id="tableRendez" layoutX="62.0" layoutY="235.0" onMouseClicked="#choisirRendezvous" prefHeight="179.0" prefWidth="638.0">
+      <VBox layoutX="-2.0" prefHeight="676.0" prefWidth="962.0" style="-fx-background-color: #00dcd5;" />
+      <Label layoutX="74.0" layoutY="52.0" prefHeight="25.0" prefWidth="94.0" text="NOM" textFill="#755dff">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="339.0" layoutY="56.0" text="PRENOM" textFill="#6159ec" textOverrun="WORD_ELLIPSIS">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label layoutX="74.0" layoutY="116.0" text="LIEU" textFill="#6159ec">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label layoutX="339.0" layoutY="116.0" text="EMAIL" textFill="#6159ec">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label layoutX="74.0" layoutY="168.0" text="DATE" textFill="#6159ec">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label layoutX="339.0" layoutY="168.0" text="USER" textFill="#6159ec">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <TextField fx:id="nomtf" layoutX="154.0" layoutY="52.0" style="-fx-background-color: #2697e7;" />
+      <TextField fx:id="lieutf" layoutX="154.0" layoutY="112.0" style="-fx-background-color: #2697e7;" />
+      <TextField fx:id="prenomtf" layoutX="436.0" layoutY="52.0" style="-fx-background-color: #2697e7; -fx-cursor: #00000;" />
+      <TextField fx:id="emailtf" layoutX="437.0" layoutY="112.0" style="-fx-background-color: #2697e7;" />
+      <TextField fx:id="usertf" layoutX="438.0" layoutY="164.0" style="-fx-background-color: #2697e7;" />
+      <Button fx:id="btnrendez" layoutX="709.0" layoutY="247.0" mnemonicParsing="false" onAction="#ajouterrendezvous" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: #A1A5F3; -fx-background-radius: 30;" text="ajouter" />
+      <DatePicker fx:id="datetf" layoutX="154.0" layoutY="164.0" prefHeight="26.0" prefWidth="159.0" style="-fx-background-color: #000000;" />
+      <Button fx:id="btnmodif" layoutX="709.0" layoutY="289.0" mnemonicParsing="false" onAction="#modifierrendezvous" prefHeight="36.0" prefWidth="86.0" style="-fx-background-color: #A1A5F3; -fx-background-radius: 30;" text="modifier " />
+      <Button fx:id="btnsupp" layoutX="709.0" layoutY="345.0" mnemonicParsing="false" onAction="#supprimerrendezvous" prefHeight="36.0" prefWidth="86.0" style="-fx-background-color: #A1A5F3; -fx-background-radius: 30;" text="supprimer" />
+      <TableView fx:id="tableRendez" layoutX="62.0" layoutY="235.0" onMouseClicked="#choisirRendezvous" prefHeight="179.0" prefWidth="638.0" style="-fx-background-color: #000000;">
         <columns>
           <TableColumn fx:id="nomTV" prefWidth="99.99996948242188" text="nom" />
           <TableColumn fx:id="prenomTV" prefWidth="67.20001220703125" text="prenom" />
@@ -37,11 +59,13 @@
         </columns>
       </TableView>
       <TextField fx:id="idmodifierField" layoutX="608.0" layoutY="164.0" prefHeight="26.0" prefWidth="40.0" />
-      <Button fx:id="btnfacture" layoutX="685.0" layoutY="429.0" mnemonicParsing="false" onAction="#facture" prefHeight="26.0" prefWidth="106.0" text="facture" />
-      <Button fx:id="excelbtn" layoutX="62.0" layoutY="416.0" mnemonicParsing="false" onAction="#excelrendez" prefHeight="26.0" prefWidth="99.0" style="-fx-background-radius: 30;" text="EXCEL" />
-      <Button layoutX="199.0" layoutY="423.0" mnemonicParsing="false" onAction="#pdfEvent" text="pdf" />
-      <Button fx:id="musicButton" layoutX="313.0" layoutY="423.0" mnemonicParsing="false" onAction="#playMusic" text="music" />
-      <Button fx:id="pauseMusicButton" layoutX="313.0" layoutY="455.0" mnemonicParsing="false" onAction="#pauseMusic" text="stop" />
+      <Button fx:id="btnfacture" layoutX="685.0" layoutY="429.0" mnemonicParsing="false" onAction="#facture" prefHeight="26.0" prefWidth="106.0" style="-fx-background-color: #A1A5F3; -fx-background-radius: 30;" text="facture" />
+      <Button fx:id="excelbtn" layoutX="62.0" layoutY="416.0" mnemonicParsing="false" onAction="#excelrendez" prefHeight="26.0" prefWidth="99.0" style="-fx-background-color: #A1A5F3; -fx-background-radius: 30;" text="EXCEL" textFill="#050505" />
+      <Button layoutX="168.0" layoutY="416.0" mnemonicParsing="false" onAction="#pdfEvent" prefHeight="26.0" prefWidth="94.0" style="-fx-background-color: #A1A5F3; -fx-background-radius: 30;" text="pdf" />
+      <Button fx:id="musicButton" layoutX="280.0" layoutY="416.0" mnemonicParsing="false" onAction="#playMusic" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: #A1A5F3; -fx-background-radius: 30;" text="music" />
+      <Button fx:id="pauseMusicButton" layoutX="284.0" layoutY="455.0" mnemonicParsing="false" onAction="#pauseMusic" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: #A1A5F3; -fx-background-radius: 30;" text="stop" />
       <ImageView fx:id="QrCode" fitHeight="150.0" fitWidth="200.0" layoutX="723.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="map" layoutX="413.0" layoutY="429.0" mnemonicParsing="false" onAction="#map" prefHeight="26.0" prefWidth="99.0" style="-fx-background-color: #A1A5F3; -fx-background-radius: 30;" text="localisation" />
+      <TextField fx:id="searchField" layoutX="730.0" layoutY="197.0" onKeyPressed="#search" promptText="recherche rendez vous" style="-fx-background-color: #000000;" />
    </children>
 </AnchorPane>

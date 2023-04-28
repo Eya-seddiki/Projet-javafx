@@ -62,7 +62,7 @@ public class FrontController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-     try {
+    try {
          // TODO
          senddata();
      } catch (SQLException ex) {
