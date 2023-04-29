@@ -37,7 +37,7 @@
       <ImageView fitHeight="491.0" fitWidth="319.0" layoutX="62.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true" />
       <VBox layoutX="49.0" layoutY="25.0" prefHeight="531.0" prefWidth="345.0" style="-fx-background-color: #9CA1B7;">
          <children>
-            <ImageView fitHeight="505.0" fitWidth="319.0">
+            <ImageView fitHeight="554.0" fitWidth="319.0">
                <image>
                   <Image url="@person_7.jpg" />
                </image>
@@ -57,24 +57,17 @@
             <String fx:value="button" />
             <String fx:value="chosen-fruit-card" />
          </styleClass></TextArea>
-      <TextField fx:id="cvf" layoutX="424.0" layoutY="288.0" prefHeight="25.0" prefWidth="311.0" styleClass="fruit-item" stylesheets="@../../../../Downloads/SOUND-ON-Desktop/src/values/style.css" />
-      <TextField fx:id="mailf" layoutX="424.0" layoutY="128.0" prefHeight="25.0" prefWidth="337.0" stylesheets="@../../../../Downloads/SOUND-ON-Desktop/src/values/style.css">
-         <styleClass>
-            <String fx:value="add-btn" />
-            <String fx:value="shadow" />
-            <String fx:value="fruit-item" />
-         </styleClass>
-      </TextField>
-      <ComboBox fx:id="nomoffref" layoutX="425.0" layoutY="212.0" prefHeight="25.0" prefWidth="337.0" styleClass="fruit-item" stylesheets="@../../../../Downloads/SOUND-ON-Desktop/src/values/style.css" />
+      <TextField fx:id="cvf" layoutX="424.0" layoutY="288.0" prefHeight="42.0" prefWidth="311.0" styleClass="fruit-item" stylesheets="@../../../../Downloads/SOUND-ON-Desktop/src/values/style.css" />
+      <ComboBox fx:id="nomoffref" layoutX="425.0" layoutY="212.0" prefHeight="42.0" prefWidth="337.0" styleClass="fruit-item" stylesheets="@../../../../Downloads/SOUND-ON-Desktop/src/values/style.css" />
       <Button layoutX="417.0" layoutY="561.0" mnemonicParsing="false" onAction="#ajouterf" prefHeight="34.0" prefWidth="345.0" stylesheets="@../../../../Downloads/SOUND-ON-Desktop/src/values/style.css" text="postuler">
          <styleClass>
             <String fx:value="fruit-item" />
             <String fx:value="choiceBox" />
          </styleClass>
       </Button>
-      <Button layoutX="738.0" layoutY="288.0" mnemonicParsing="false" onAction="#insertion" prefHeight="25.0" prefWidth="23.0" styleClass="fruit-item" stylesheets="@../../../../Downloads/SOUND-ON-Desktop/src/values/style.css" text="Button" />
+      <Button layoutX="738.0" layoutY="288.0" mnemonicParsing="false" onAction="#insertion" prefHeight="42.0" prefWidth="24.0" styleClass="fruit-item" stylesheets="@../../../../Downloads/SOUND-ON-Desktop/src/values/style.css" text="Button" />
       <ImageView fx:id="image" fitHeight="150.0" fitWidth="200.0" layoutX="590.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true" />
-      <HBox alignment="CENTER" layoutX="561.0" layoutY="14.0" prefHeight="64.0" prefWidth="200.0" style="-fx-background-color: #E0DFF0;" styleClass="search-button" stylesheets="@../../../../Downloads/SOUND-ON-Desktop/src/values/style.css">
+      <HBox alignment="CENTER" layoutX="771.0" layoutY="25.0" prefHeight="64.0" prefWidth="200.0" style="-fx-background-color: #E0DFF0;" styleClass="search-button" stylesheets="@../../../../Downloads/SOUND-ON-Desktop/src/values/style.css">
          <children>
             <ImageView fitHeight="34.0" fitWidth="51.0" layoutX="50.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" x="100.0" y="2.0">
                <image>
@@ -100,5 +93,6 @@
             <Insets right="40.0" />
          </padding>
       </HBox>
+      <ComboBox fx:id="mailf" layoutX="425.0" layoutY="108.0" prefHeight="42.0" prefWidth="337.0" />
    </children>
 </AnchorPane>

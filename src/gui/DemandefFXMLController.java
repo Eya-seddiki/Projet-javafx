@@ -20,7 +20,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
@@ -28,11 +32,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import javafx.util.StringConverter;
 import model.Demande;
 import model.Offre;
+import model.User;
 import services.DemandeServices;
 import services.OffreServices;
+import services.UserServices;
 
 /**
  * FXML Controller class
@@ -45,8 +52,8 @@ public class DemandefFXMLController implements Initializable {
     private TextArea descriptionf;
     @FXML
     private TextField cvf;
-    @FXML
-    private TextField mailf;
+  @FXML
+    private ComboBox<User> mailf;
     @FXML
     private ComboBox<Offre> nomoffref;
       @FXML
@@ -57,6 +64,7 @@ public class DemandefFXMLController implements Initializable {
      */
              DemandeServices s = new DemandeServices();
 OffreServices ps = new OffreServices();
+UserServices U = new UserServices();
          ObservableList<String> nomooffery =FXCollections.observableArrayList();
    
     @Override
@@ -76,12 +84,26 @@ OffreServices ps = new OffreServices();
 				return nomoffref.getItems().stream().filter(a -> a.getNom_offre().equals(string)).findFirst().orElse(null);
 			}
 		});
-                
+                 List<User> listuser = U.afficherUser();
+        
+        mailf.setItems(FXCollections.observableArrayList(listuser));
+		mailf.setConverter(new StringConverter<User>() {
+			
+             @Override
+             public String toString(User object) {
+				return object.getEmail();
+             }
+
+             @Override
+             public User fromString(String string) {
+				return mailf.getItems().stream().filter(a -> a.getEmail().equals(string)).findFirst().orElse(null);
+             }
+		});
     }    
 
     @FXML
     private void ajouterf(ActionEvent event) {
-        if ((cvf.getText().isEmpty()) || (descriptionf.getText().isEmpty() || (nomoffref.getSelectionModel().getSelectedIndex()==-1) )){
+        if ((cvf.getText().isEmpty()) || (descriptionf.getText().isEmpty() || (nomoffref.getSelectionModel().getSelectedIndex()==-1) ||(mailf.getSelectionModel().getSelectedIndex()==-1) )){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
 alert.setTitle("Error");
 alert.setHeaderText("Add Error");
@@ -90,10 +112,21 @@ alert.setContentText("all fields must  not be empty !");
 alert.showAndWait();
         }
         
-        Demande d= new Demande(nomoffref.getSelectionModel().getSelectedItem().getId_offre(), cvf.getText(), descriptionf.getText());
+        Demande d= new Demande(nomoffref.getSelectionModel().getSelectedItem().getId_offre(),mailf.getSelectionModel().getSelectedItem().getId(), cvf.getText(), descriptionf.getText());
            System.out.println(d);
            s.ajouterDemande(d);
-           //senddata();
+           try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("offrefrontFXML.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+            stage.toFront();
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+
+    }
     }
 
     @FXML

@@ -23,7 +23,7 @@ public class NewFXMain extends Application {
    
     @Override
     public void start(Stage primaryStage) throws IOException {
-               Parent root = FXMLLoader.load(getClass().getResource("../gui/offreFXML.fxml"));
+               Parent root = FXMLLoader.load(getClass().getResource("../gui/offrefrontFXML.fxml"));
         Scene scene = new Scene(root,950,650); //Récupération du stage courant (La fenêtre courante)
         primaryStage.setTitle("Gérer offres");
         //primaryStage.setIconified(true);

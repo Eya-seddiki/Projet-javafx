@@ -44,11 +44,7 @@
                         <VBox alignment="CENTER" prefHeight="100.0" prefWidth="203.0" />
                      </children>
                   </HBox>
-                  <VBox alignment="CENTER" layoutX="41.0" layoutY="551.0" prefHeight="62.0" prefWidth="289.0">
-                     <children>
-                        <Button mnemonicParsing="false" onAction="#postuler" prefHeight="48.0" prefWidth="211.0" text="postuler " />
-                     </children>
-                  </VBox>
+                  <VBox alignment="CENTER" layoutX="41.0" layoutY="551.0" prefHeight="62.0" prefWidth="289.0" />
                   <HBox alignment="CENTER" layoutX="35.0" layoutY="132.0" prefHeight="62.0" prefWidth="289.0" styleClass="button" stylesheets="@../../../../Downloads/SOUND-ON-Desktop/src/values/style.css">
                      <children>
                         <VBox alignment="CENTER" prefHeight="49.0" prefWidth="121.0">
@@ -115,14 +111,20 @@
                         <Insets right="40.0" />
                      </padding>
                   </HBox>
+                  <Button layoutX="119.0" layoutY="634.0" mnemonicParsing="false" onAction="#postuler" prefHeight="48.0" prefWidth="211.0" text="postuler " />
+                  <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="128.0" layoutY="641.0">
+                     <image>
+                        <Image url="@188427.png" />
+                     </image>
+                  </ImageView>
                </children>
             </AnchorPane>
          </children>
       </VBox>
       <HBox layoutX="264.0" layoutY="167.0" prefHeight="381.0" prefWidth="642.0" />
-      <ScrollPane layoutX="370.0" layoutY="36.0" prefHeight="930.0" prefWidth="880.0" style="-fx-background-color: #FFE4B5;">
+      <ScrollPane layoutX="372.0" layoutY="125.0" prefHeight="841.0" prefWidth="878.0" style="-fx-background-color: #FFFCFC;">
          <content>
-            <GridPane fx:id="gridEvent" prefHeight="567.0" prefWidth="881.0" style="-fx-background-color: #F0F9F4;">
+            <GridPane fx:id="gridEvent" prefHeight="567.0" prefWidth="881.0" style="-fx-background-color: #FFFCFC;">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -134,5 +136,27 @@
             </GridPane>
          </content>
       </ScrollPane>
+      <HBox alignment="CENTER" layoutX="585.0" layoutY="31.0" prefHeight="57.0" prefWidth="430.0" stylesheets="@../../../../Downloads/SOUND-ON-Desktop/src/values/style.css">
+         <children>
+            <VBox alignment="CENTER" prefHeight="49.0" prefWidth="121.0">
+               <children>
+                  <ImageView fitHeight="49.0" fitWidth="78.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@3487352.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </VBox>
+            <Label prefHeight="37.0" prefWidth="360.0" text="Nos offres d'emploi " textFill="#051683">
+               <font>
+                  <Font name="Berlin Sans FB" size="33.0" />
+               </font>
+            </Label>
+         </children>
+         <styleClass>
+            <String fx:value="fruit-item" />
+            <String fx:value="button" />
+         </styleClass>
+      </HBox>
    </children>
 </AnchorPane>

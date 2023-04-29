@@ -122,7 +122,22 @@ public class OffreFXMLController implements Initializable {
             System.out.println(ex.getMessage());
 
      
-    }}
+    }
+    Notifications notificationBuilder = Notifications.create()
+        .title("Produit Ajouter")
+        .text("votre offre a été ajoutee avec succes")
+        .graphic(null)
+        .hideAfter(javafx.util.Duration.seconds(5))
+        .position(Pos.BOTTOM_RIGHT)
+        .onAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("ajout avec succes");
+            }
+               });
+        notificationBuilder.showConfirm();
+   //String asma =statistique( event);
+    }
     @FXML
     void onActionSearch(ActionEvent event) {
 
@@ -224,7 +239,7 @@ private boolean NoDate() {
              senddata();
                       Notifications notificationBuilder = Notifications.create()
         .title("Produit Ajouter")
-        .text("votre produit a été ajoutee avec succes")
+        .text("votre offre a été ajoutee avec succes")
         .graphic(null)
         .hideAfter(javafx.util.Duration.seconds(5))
         .position(Pos.BOTTOM_RIGHT)

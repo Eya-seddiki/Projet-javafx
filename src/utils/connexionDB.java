@@ -10,11 +10,16 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class connexionDB { 
-    final String url ="jdbc:mysql://localhost:3306/test6";
-    final String login ="root";
-    final String pwd="";
+    private final String url = "jdbc:mysql://localhost:3306/test6";
+    public  static String url_upload = "file:///C:////xampp////htdocs////ImageP////";
+    public static String url_target = "C:/Artifact-master/public/back/img/";
+    private final String login = "root";
+    private final String pwd = "";
+    private Connection connexion;
     private static connexionDB instance;
-    Connection connexion;
+   
+   
+  
     
     private connexionDB(){
         
