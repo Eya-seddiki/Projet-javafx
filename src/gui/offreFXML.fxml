@@ -16,9 +16,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="821.0" style="-fx-background-color: #A1A5F3;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.OffreFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="821.0" style="-fx-background-color: #08B9B9;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.OffreFXMLController">
    <children>
-      <VBox prefHeight="600.0" prefWidth="263.0" style="-fx-background-color: #2B3977;">
+      <VBox prefHeight="600.0" prefWidth="263.0" style="-fx-background-color: #F9FDFD;">
          <children>
             <AnchorPane prefHeight="586.0" prefWidth="269.0">
                <children>

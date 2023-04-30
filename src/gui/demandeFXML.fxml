@@ -16,9 +16,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="700.0" style="-fx-background-color: #A1A5F3;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DemandeFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="700.0" style="-fx-background-color: #08B9B9;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DemandeFXMLController">
    <children>
-      <VBox prefHeight="700.0" prefWidth="221.0" style="-fx-background-color: #2B3977;">
+      <VBox prefHeight="700.0" prefWidth="221.0" style="-fx-background-color: #F9FDFD;">
          <children>
             <AnchorPane prefHeight="700.0" prefWidth="221.0">
                <children>
@@ -127,11 +127,10 @@
         <columns>
           <TableColumn fx:id="idd" prefWidth="98.0" text="id_demande" />
           <TableColumn fx:id="nomd" prefWidth="114.0" text="nom de l'offre" />
-            <TableColumn fx:id="maild" prefWidth="91.0" text="mail" />
-            <TableColumn fx:id="cvd" prefWidth="93.0" text="cv" />
-            <TableColumn fx:id="descrid" onEditCommit="#ondescriptioncommit" prefWidth="91.0" text="description" />
-            <TableColumn fx:id="traietmentd" prefWidth="132.0" text="traitement" />
-            <TableColumn fx:id="bouton" prefWidth="98.0" text="bouton" />
+            <TableColumn fx:id="maild" prefWidth="122.0" text="mail" />
+            <TableColumn fx:id="cvd" prefWidth="89.0" text="cv" />
+            <TableColumn fx:id="descrid" onEditCommit="#ondescriptioncommit" prefWidth="125.0" text="description" />
+            <TableColumn fx:id="traietmentd" prefWidth="148.0" text="traitement" />
         </columns>
       </TableView>
       <Button layoutX="757.0" layoutY="237.0" mnemonicParsing="false" onAction="#ajouterdemande" prefHeight="25.0" prefWidth="193.0" stylesheets="@../../../../Downloads/SOUND-ON-Desktop/src/values/style.css" text="ajouter">

@@ -18,10 +18,10 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="874.0" prefWidth="1283.0" style="-fx-background-color: #A1A5F3;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.OffrefrontFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="874.0" prefWidth="1283.0" style="-fx-background-color: #08B9B9;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.OffrefrontFXMLController">
    <children>
       <Button layoutX="870.0" layoutY="561.0" mnemonicParsing="false" onAction="#postuler" text="postuler" />
-      <VBox layoutX="-26.0" layoutY="-10.0" prefHeight="1010.0" prefWidth="358.0" style="-fx-background-color: #2B3977;">
+      <VBox layoutX="-26.0" layoutY="-10.0" prefHeight="1010.0" prefWidth="358.0" style="-fx-background-color: #F9FDFD;">
          <children>
             <AnchorPane prefHeight="1009.0" prefWidth="358.0" style="-fx-background-image: #2B3977;">
                <children>
