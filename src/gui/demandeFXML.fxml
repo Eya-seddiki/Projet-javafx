@@ -22,7 +22,7 @@
          <children>
             <AnchorPane prefHeight="700.0" prefWidth="221.0">
                <children>
-                  <HBox alignment="CENTER" layoutX="13.0" layoutY="87.0" prefHeight="64.0" prefWidth="200.0" style="-fx-background-color: #E0DFF0;" styleClass="search-button" stylesheets="@../../../../Downloads/SOUND-ON-Desktop/src/values/style.css">
+                  <HBox alignment="CENTER" layoutX="14.0" layoutY="36.0" prefHeight="64.0" prefWidth="200.0" style="-fx-background-color: #E0DFF0;" styleClass="search-button" stylesheets="@../../../../Downloads/SOUND-ON-Desktop/src/values/style.css">
                      <children>
                         <ImageView fitHeight="34.0" fitWidth="51.0" layoutX="50.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" x="100.0" y="2.0">
                            <image>
@@ -48,7 +48,7 @@
                         <Insets right="40.0" />
                      </padding>
                   </HBox>
-                  <HBox alignment="CENTER" layoutX="20.0" layoutY="243.0" prefHeight="49.0" prefWidth="187.0" stylesheets="@../../../../Downloads/SOUND-ON-Desktop/src/values/style.css">
+                  <HBox alignment="CENTER" layoutX="21.0" layoutY="160.0" prefHeight="49.0" prefWidth="187.0" stylesheets="@../../../../Downloads/SOUND-ON-Desktop/src/values/style.css">
                      <children>
                         <VBox alignment="CENTER" prefHeight="49.0" prefWidth="121.0">
                            <children>
@@ -70,7 +70,7 @@
                         <String fx:value="button" />
                      </styleClass>
                   </HBox>
-                  <HBox alignment="CENTER" layoutX="17.0" layoutY="317.0" prefHeight="49.0" prefWidth="187.0" styleClass="button" stylesheets="@../../../../Downloads/SOUND-ON-Desktop/src/values/style.css">
+                  <HBox alignment="CENTER" layoutX="21.0" layoutY="244.0" prefHeight="49.0" prefWidth="187.0" styleClass="button" stylesheets="@../../../../Downloads/SOUND-ON-Desktop/src/values/style.css">
                      <children>
                         <VBox alignment="CENTER" prefHeight="49.0" prefWidth="121.0">
                            <children>
@@ -98,7 +98,7 @@
                         <Image url="@122641.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="cview" fitHeight="111.0" fitWidth="100.0" layoutX="82.0" layoutY="397.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="cview" fitHeight="295.0" fitWidth="193.0" layoutX="13.0" layoutY="319.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </AnchorPane>
          </children></VBox>

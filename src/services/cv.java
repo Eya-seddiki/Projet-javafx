@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.sql.SQLException;
+import static javafx.scene.transform.Transform.scale;
 import javax.servlet.ServletException;
 import model.Demande;
 import javax.servlet.http.HttpServlet;
@@ -30,15 +31,5 @@ import javax.servlet.http.HttpServletResponse;
  * @author dell
  */
 public class cv extends HttpServlet{
-     public void doGet(String filePath, HttpServletResponse response) throws ServletException, IOException {
-      //  String filePath = request.getParameter("filePath"); // récupère le chemin du fichier à télécharger
-        File file = new File(filePath); // crée un objet File à partir du chemin du fichier
-        byte[] content = Files.readAllBytes(Paths.get(file.getAbsolutePath())); // lit le contenu du fichier dans un tableau de bytes
-        
-        response.setContentType("application/octet-stream"); // définit le type de contenu de la réponse à binaire
-        response.setHeader("Content-Disposition", "attachment; filename=\"" + file.getName() + "\""); // définit le nom du fichier à télécharger
-        response.getOutputStream().write(content); // envoie le contenu du fichier en tant que réponse HTTP
-        response.getOutputStream().flush();
-        response.getOutputStream().close();
-    }
+     
 }

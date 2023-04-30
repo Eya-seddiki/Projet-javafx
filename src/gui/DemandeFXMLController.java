@@ -64,6 +64,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.value.ChangeListener;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -76,6 +77,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
+import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -108,6 +110,7 @@ import services.mail;
 public class DemandeFXMLController implements Initializable {
     private PDDocument document;
     private PDFRenderer renderer;
+     private double zoomFactor = 1.0;
          DemandeServices s = new DemandeServices();
          UserServices U = new UserServices();
          OffreServices ps = new OffreServices();
@@ -353,15 +356,17 @@ private void uploadimg(ActionEvent event) {
         
       //  maildd.setText(String.valueOf(e.getId_user())); 
         ///////lel image
+         pdff.setText(e.getCv());
        String path = e.getCv();
        // String DBPath = "C:\\xampp\\htdocs\\ImageP\\"  + x + ".pdf";
- //File file = new File("C:\\\\xampp\\\\htdocs\\\\ImageP\\\\68.pdf");
+ //File file = new File("C:\\xampp\\htdocs\\ImageP\\316.pdf");
 
             // Load the PDF document
- //File file = new File(path);
+ File file = new File(path);
 
-            File file = new File(path);
-            document = Loader.loadPDF(file);
+            //File file = new File(path);
+          //  document = Loader.loadPDF(file);
+             document = PDDocument.load(file);
 
             // Create a PDF renderer
             renderer = new PDFRenderer(document);
@@ -374,12 +379,32 @@ private void uploadimg(ActionEvent event) {
 
             // Convert the buffered image to a JavaFX image
             Image fxImage = SwingFXUtils.toFXImage(image, null);
+   cview.addEventFilter(ScrollEvent.ANY, event1 -> {
+            // Zoom avant
+            if (event1.getDeltaY() > 0) {
+                zoomFactor *= 1.1;
+            }
+            // Zoom arrière
+            else if (event1.getDeltaY() < 0) {
+                zoomFactor /= 1.1;
+            }
 
+            // Limiter le zoom à une valeur minimale et maximale
+            zoomFactor = Math.max(zoomFactor, 0.1);
+            zoomFactor = Math.min(zoomFactor, 10.0);
+
+            // Appliquer le zoom à l'ImageView
+            cview.setScaleX(zoomFactor);
+            cview.setScaleY(zoomFactor);
+
+            event.consume();
+        });
             // Set the JavaFX image to the image view
-            cview.setImage(fxImage);
+           cview.setImage(fxImage);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+      
     }
 
 
