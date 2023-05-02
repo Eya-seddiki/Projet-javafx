@@ -139,7 +139,7 @@ public class reclamation_Service implements ISerivce<reclamation> {
         return list;
     }
 
-    public ObservableList<Integer> Reclamation_ids() throws SQLException {
+    public ObservableList<Integer> Reclamation_ids() throws SQLException { // njib les id de rec
         ObservableList<Integer> list = FXCollections.observableArrayList();
         String requete = "SELECT * FROM `reclamation` ";
         try {

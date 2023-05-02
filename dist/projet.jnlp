@@ -11,7 +11,7 @@
     <jar href="lib\controlsfx-8.40.11.jar" size="985420" download="eager" />
     <jar href="lib\javax.mail.jar" size="659033" download="eager" />
     <jar href="lib\mysql-connector-java-8.0.19.jar" size="2356711" download="eager" />
-    <jar href="projet.jar" size="4691378" download="eager" />
+    <jar href="projet.jar" size="4801303" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="projet" >
     <param name="requiredFXVersion" value="8.0+"/>

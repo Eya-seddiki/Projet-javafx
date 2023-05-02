@@ -31,6 +31,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.util.Callback;
 import javafx.util.converter.IntegerStringConverter;
+import service.TrayIconDemo;
 
 /**
  * FXML Controller class
@@ -215,6 +216,8 @@ public class FrontCrontroller implements Initializable {
                 // 1 lahne tttbdel zeda b id ta session
                 reclamation rec = new reclamation(txtnom_reclamation.getText(), txtprenom_reclamation.getText(), txtdestination_reclamation.getText(), txtdescription_reclamation.getText(), "Non traitee", 1);
                 serviceReclamation.Ajouter(rec);
+                TrayIconDemo t = new TrayIconDemo();
+                t.notifme("une reclamation ete ajouter ");
                 refreche_reclamation();
             }
         }

@@ -126,9 +126,9 @@
                   </Button>
                </children>
             </VBox>
-            <ImageView fx:id="image_user" fitHeight="38.0" fitWidth="34.0" layoutX="900.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="image_user" fitHeight="27.0" fitWidth="180.0" layoutX="766.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Downloads/image_user.jpg" />
+                  <Image url="@../images/BOUTON%20RECLAMATION_0.png" />
                </image>
             </ImageView>
             <Label fx:id="username" layoutX="700.0" layoutY="20.0" prefHeight="27.0" prefWidth="149.0" text="Client">

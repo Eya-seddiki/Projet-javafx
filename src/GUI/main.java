@@ -21,7 +21,7 @@ public class main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         //front
-  //Parent root = FXMLLoader.load(getClass().getResource("Front.fxml"));//recherche la chemin de fxml//
+//Parent root = FXMLLoader.load(getClass().getResource("Front.fxml"));//recherche la chemin de fxml//
         //admin
   Parent root = FXMLLoader.load(getClass().getResource("Admin_Reclamation.fxml"));
         primaryStage.setScene(new Scene(root));
@@ -42,6 +42,9 @@ public class main extends Application {
         primaryStage.show();//Afficher la fenetre de javafx
     
     
+    }
+    public static void  main (String[] args){
+        launch(args);
     }
     
 }
